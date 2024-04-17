@@ -1,20 +1,14 @@
 {
-  "name": "My-SE-project",
-        "version": "1.0.0",
-        "description": "",
-        "scripts": {
-            "build": "echo \"No build specified\" && exit 1",
-            "test": "echo \"No test specified\" && exit 1",
-            "start": "node index.js"
-       },
-        "repository": {
-            "type": "git",
-            "url": "git+https://github.com/MSafiullah1/My-SE-project.git"
-        },
-        "author": "",
-        "license": "ISC",
-        "bugs": {
-            "url": "https://github.com/MSafiullah1/My-SE-project/issues"
-        },
-        "homepage": "https://github.com/MSafiullah1/My-SE-project#readme"
+    "name": "succession-planning-app",
+    "version": "1.0.0",
+    "engines": {
+        "node": "20.x"
+    },
+    "scripts": {
+        "start": "npm run start:server",
+        "start:server": "cd Proj/server && npm install && npm start",
+        "build": "npm run build:client && npm run build:server",
+        "build:client": "echo 'Building client...'",
+        "build:server": "echo 'Building server...'"
     }
+}
