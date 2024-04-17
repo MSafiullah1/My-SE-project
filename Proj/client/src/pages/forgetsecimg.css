@@ -1,0 +1,125 @@
+/* forgetimg.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f3f3;
+}
+
+.resetImG-container {
+    width: 100%;
+    max-width: 400px;
+    background:  #9ccff4;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    margin: 20px;
+    margin-left: 850px;
+}
+
+.reset-box h1 {
+    color: #0073b1;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.reset-box h3 {
+    color: #111111;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.input-group input {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin: 5px 0;
+    border: 2px solid #0073b1;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.input-group input[disabled] {
+    background-color: #e9ecef;
+    color: grey;
+}
+
+.search-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: #0073b1;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.signup-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #305496;
+    color: white;
+    cursor: pointer;
+}
+
+.signup-btn:hover {
+    background-color: #27407f;
+}
+
+.security-image {
+    width: 40px;
+    /* Your desired size */
+    height: 40px;
+    /* Your desired size */
+    border: 2px solid #000;
+    /* Adjust the color and width of the border as needed */
+    margin: 5px;
+    /* Adjust the margin as needed */
+    display: inline-block;
+    /* or flex if you prefer */
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    /* Optional: adds shadow for depth */
+    border-radius: 4px;
+    /* Optional: if you want rounded corners */
+}
+
+.security-image.selected {
+    border: 4px solid #305496;
+}
+
+@media (max-width: 768px) {
+    .resetImG-container {
+        margin: 20px;
+    }
+
+    .input-group input,
+    .input-group button {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .security-images {
+        justify-content: center;
+    }
+}

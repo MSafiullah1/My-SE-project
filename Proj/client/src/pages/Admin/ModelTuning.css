@@ -1,0 +1,293 @@
+html {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+/*To ensure page is covered entriely with the help of a div overlaid on top*/
+body {
+    margin: 0px;
+    min-height: 100%;
+    min-width: 100%;
+    overflow: hidden;
+    display: flex;
+}
+
+
+.overlay {
+    background-color: #ccc;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+}
+
+/*Forming the basic structure*/
+.wrapper {
+    height: 100%;
+    display: grid;
+    grid: 1fr / 1.1fr 5fr;
+    background-color: blueviolet;
+    border: 10px;
+}
+
+/*Sidebar. Grid/Flexbox combined*/
+.sidebar {
+    display: grid;
+    grid: 1fr 4fr 2fr/ 1fr;
+    background-color: rgb(241, 241, 254);
+    max-height: 100vh;
+    color: white;
+    align-items: center;
+}
+
+
+.logo>div {
+    display: flex;
+    align-items: center;
+    margin: 5%;
+}
+
+.logo-icon-container {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.logo>div>span {
+    margin-left: 15px;
+    font-size: xx-large;
+    font-weight: 700;
+    color: black;
+    font-family: 'Montserrat';
+}
+
+/*Sidebar pages*/
+.menu>div {
+    border-radius: 10px;
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+    /*  transition for smooth effect */
+}
+
+.menu>div:hover {
+    background-color: #d9e3f0;
+    /* Light grey background color on hover */
+}
+
+.menu>div>a {
+    margin-left: 10%;
+    color: #818184;
+    text-decoration: none;
+    font-family: 'Montserrat'
+
+}
+
+
+.menu>div.active>.icon {
+    color: rgb(52, 133, 247);
+    /* Change color on hover and when active for the icon */
+}
+
+.menu>div.active>a {
+    color: rgb(52, 133, 247);
+    /* Change color for active menu item */
+}
+
+/*The right page divided into the 3 sections - about, function cards, data table*/
+.contentSettings {
+    display: grid;
+    grid: 1fr 5.2fr / 1fr;
+    max-height: 100vh;
+    background-color: #FAFBFC;
+    overflow-y: scroll;
+}
+
+/*About and Profile*/
+.header {
+    display: flex;
+    margin: 30px;
+    justify-content: right;
+    align-items: center;
+    border-bottom: 3px solid #EBEBFF;
+}
+
+.header>span {
+    margin-right: 60px;
+    margin-left: 30px;
+    color: #818184;
+}
+
+.header>a {
+    margin-right: 50px;
+    margin-left: 20px;
+    text-decoration: none;
+    font-family: 'Monsterrat';
+    font-size: x-large;
+    color: #818184;
+    transition: background-color 0.3s;
+}
+
+.header>a:hover {
+    border-radius: 10px;
+    background-color: #d9e3f0;
+    /* Light grey background color on hover */
+}
+
+/* Table styling */
+.weights {
+    margin: 20px;
+}
+
+.weights h1 {
+    margin: 20px;
+}
+
+.weights table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.weights th,
+.weights td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.weights th {
+    background-color: #f2f2f2;
+}
+
+.weights tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+} */
+
+
+/* 
+.sliders {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+} */
+
+
+/* .sliders {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #ffffff;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+} */
+
+.sliders {
+    width: 30%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.slider-container {
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.slider-container label {
+    display: block;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+.slider-container input[type='range'] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    background: #000;
+    outline: none;
+    border: 5px solid rgb(193, 230, 255);
+    border-radius: 8px;
+    transition: border-color 0.3s;
+}
+
+.slider-container input[type='range']:hover {
+    border-color: rgb(161, 217, 255);
+}
+
+.slider-container input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 20px;
+    background: rgb(44, 171, 255);
+    cursor: pointer;
+    border: 4px solid rgb(52, 66, 109);
+    border-radius: 25%;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.slider-container input[type='range']::-webkit-slider-thumb:hover {
+    background: rgb(110, 135, 218);
+}
+
+.slider-container input[type='range']::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #000;
+    cursor: pointer;
+    border: 5px solid rgb(52, 66, 109);
+    border-radius: 50%;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.slider-container input[type='range']::-moz-range-thumb:hover {
+    background: rgb(52, 66, 109);
+}
+
+.sliders button {
+    background-color: rgb(52, 66, 109);
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 15px;
+}
+
+.sliders button:hover {
+    background-color: rgb(110, 135, 218);
+    transition: background-color 0.3s;
+    animation: pulse 3s infinite;
+}

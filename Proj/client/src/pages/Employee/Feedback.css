@@ -1,0 +1,248 @@
+html {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+/*To ensure page is covered entriely with the help of a div overlaid on top*/
+body {
+    margin: 0px;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+
+.overlay {
+    background-color: #ccc;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+}
+
+/*Forming the basic structure*/
+.wrapper {
+    height: 100%;
+    display: grid;
+    grid: 1fr / 1.1fr 5fr;
+    background-color: blueviolet;
+    border: 10px;
+}
+
+/*Sidebar. Grid/Flexbox combined*/
+.sidebar {
+    display: grid;
+    grid: 1fr 4fr 2fr/ 1fr;
+    background-color: rgb(241, 241, 254);
+    max-height: 100vh;
+    color: white;
+    align-items: center;
+}
+
+
+.logo>div {
+    display: flex;
+    align-items: center;
+    margin: 5%;
+}
+
+.logo-icon-container {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.logo>div>span {
+    margin-left: 15px;
+    font-size: xx-large;
+    font-weight: 700;
+    color: black;
+    font-family: 'Montserrat';
+}
+
+/*Sidebar pages*/
+.menu>div {
+    border-radius: 10px;
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+    /*  transition for smooth effect */
+}
+
+.menu>div:hover {
+    background-color: #d9e3f0;
+    /* Light grey background color on hover */
+}
+
+.menu>div>a {
+    margin-left: 10%;
+    color: #818184;
+    text-decoration: none;
+    font-family: 'Montserrat'
+
+}
+
+
+.menu>div.active>.icon {
+    color: rgb(52, 133, 247);
+    /* Change color on hover and when active for the icon */
+}
+
+.menu>div.active>a {
+    color: rgb(52, 133, 247);
+    /* Change color for active menu item */
+}
+
+/*The right page divided into the 3 sections - about, function cards, data table*/
+.contentDashClient {
+    display: grid;
+    grid: 1fr 5.0fr / 1fr;
+    max-height: 100vh;
+    background-color: #FAFBFC;
+}
+
+/*About and Profile*/
+.header {
+    display: flex;
+    margin: 30px;
+    justify-content: right;
+    align-items: center;
+    border-bottom: 3px solid #EBEBFF;
+}
+
+.header>span {
+    margin-right: 60px;
+    margin-left: 30px;
+    color: #818184;
+}
+
+.header>a {
+    margin-right: 50px;
+    margin-left: 20px;
+    text-decoration: none;
+    font-family: 'Monsterrat';
+    font-size: x-large;
+    color: #818184;
+    transition: background-color 0.3s;
+}
+
+.header>a:hover {
+    border-radius: 10px;
+    background-color: #d9e3f0;
+    /* Light grey background color on hover */
+}
+
+/* Employee Dashboard*/
+.promotionsWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 10px;
+    /* Spacing between items */
+}
+
+#courseFeedback {
+    background-image: url('../img/course.jpg');
+    background-size: cover;
+}
+
+#complaintForm {
+    background-image: url('../img/complaint.jpg');
+    background-size: cover;
+}
+
+#pendingAssessments {
+    background-image: url('../img/assessment.jpg');
+    background-size: cover;
+}
+
+.promotionItem {
+
+    background-color: #ffffff;
+    color: white;
+    border: 10px solid white;
+    border-radius: 5px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow */
+    height: 80%;
+    width: 40%;
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.promotionItem>div {
+    margin-left: 2px;
+    color: rgb(255, 255, 255);
+    font-family: 'Source Sans 3';
+    font-weight: 900;
+    font-size: 45px;
+
+
+}
+
+.promotionItem:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    /* Shadow gets larger on hover */
+    transform: translateY(-5px);
+    /* Slight lift effect */
+}
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.feedback-form label {
+    margin-top: 10px;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.feedback-form .give-rating h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.feedback-form button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.feedback-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Style for the stars in the rating component */
+span {
+    display: inline-block;
+    margin-right: 5px;
+    cursor: pointer;
+    color: gold;
+}

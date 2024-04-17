@@ -1,0 +1,271 @@
+html {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+/*To ensure page is covered entriely with the help of a div overlaid on top*/
+body {
+    margin: 0px;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+
+.overlay {
+    background-color: #ccc;
+    /* display: flex; */
+    position: fixed;
+    /* justify-content: center; */
+    /* align-items: center; */
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+}
+
+/*Forming the basic structure*/
+.wrapper {
+    height: 100%;
+    display: grid;
+    grid: 1fr / 1.1fr 5fr;
+    background-color: blueviolet;
+    border: 10px;
+}
+
+/*Sidebar. Grid/Flexbox combined*/
+.sidebar {
+    display: grid;
+    grid: 1fr 4fr 2fr/ 1fr;
+    background-color: rgb(241, 241, 254);
+    max-height: 100vh;
+    color: white;
+    align-items: center;
+}
+
+
+.logo>div {
+    display: flex;
+    align-items: center;
+    margin: 5%;
+}
+
+.logo-icon-container {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.logo>div>span {
+    margin-left: 15px;
+    font-size: xx-large;
+    font-weight: 700;
+    color: black;
+    font-family: 'Montserrat';
+}
+
+/*Sidebar pages*/
+.menu>div {
+    border-radius: 10px;
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+    /*  transition for smooth effect */
+}
+
+.menu>div:hover {
+    background-color: #d9e3f0;
+    /* Light grey background color on hover */
+}
+
+.menu>div>a {
+    margin-left: 10%;
+    color: #818184;
+    text-decoration: none;
+    font-family: 'Montserrat'
+
+}
+
+
+.menu>div.active>.icon {
+    color: rgb(52, 133, 247);
+    /* Change color on hover and when active for the icon */
+}
+
+.menu>div.active>a {
+    color: rgb(52, 133, 247);
+    /* Change color for active menu item */
+}
+
+/*The right page divided into the 3 sections - about, function cards, data table*/
+.contentData {
+    display: grid;
+    grid: 1fr 5.2fr / 1fr;
+    max-height: 100vh;
+    background-color: #FAFBFC;
+}
+
+/*About and Profile*/
+.header {
+    display: flex;
+    margin: 30px;
+    justify-content: right;
+    align-items: center;
+    border-bottom: 3px solid #EBEBFF;
+}
+
+.header>span {
+    margin-right: 60px;
+    margin-left: 30px;
+    color: #818184;
+}
+
+.header>a {
+    margin-right: 50px;
+    margin-left: 20px;
+    text-decoration: none;
+    font-family: 'Monsterrat';
+    font-size: x-large;
+    color: #818184;
+    transition: background-color 0.3s;
+}
+
+.header>a:hover {
+    border-radius: 10px;
+    background-color: #d9e3f0;
+    /* Light grey background color on hover */
+}
+
+.employee-data {
+    /* Enable vertical scrolling */
+    /* max-height: 50vh; */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(52, 133, 247) white;
+}
+
+.employee-data::-webkit-scrollbar {
+    width: 14px;
+    border-radius: 10px;
+    background-color: transparent; /* Color of the track (scrollbar background) */
+}
+.employee-data::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+}
+
+
+.employee-data table {
+    width: 90%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    /* Adjust the spacing between rows */
+}
+
+.employee-data th,
+.employee-data td {
+    padding: 20px;
+    text-align: center;
+    margin: 20px;
+}
+
+.employee-data th {
+    background-color: #FFFFFF;
+    font-weight: bold;
+    color: #284E91;
+}
+
+.employee-data td button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.employee-data table tbody tr {
+    border-radius: 60px;
+}
+
+.employee-data td button:hover {
+    background-color: #f2f2f2;
+    border-radius: 100px;
+
+}
+
+.employee-data tr {
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 60px;
+
+}
+
+.employee-data tr:hover {
+    background-color: #f2f2f2;
+
+}
+
+.modal-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    z-index: 1050; /* High z-index to overlay everything else */
+}
+
+.modal-content-data {
+    padding: 20px;
+    border-radius: 90px;
+    border: 1px solid #ccc;
+    z-index: 1051; /* Ensure content is above the overlay */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25); /* Optional: adds some shadow */
+    max-height: 90vh; /* Optional: limits the height, makes it scrollable */
+    overflow-y: auto; /* Optional: adds a scrollbar if the content is too tall */
+    scrollbar-width: thin;
+    scrollbar-color: rgb(166, 183, 206) white;
+}
+
+.close-Modal {
+    cursor: pointer;
+    font-size: 40px;
+    color: red; /* Red color for the times character */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.edit-modal-overlay {
+    z-index: 1046; /* Sit on top */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%; /* Full width */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    /* padding-top: 60px; */
+}
+
+.status-dropdown {
+    width: 100%;
+    padding: 4px;
+    border: 1px;
+    /* border-radius: 4px; */
+    background-color: white;
+  }
+  

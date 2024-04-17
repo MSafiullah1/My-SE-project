@@ -1,0 +1,44 @@
+.about-container {
+    text-align: left;
+    background-color: #fff; /* Set background color to white */
+    padding: 20px; /* Add padding for better spacing */
+    max-height: calc(100vh - 40px); /* Set max height to viewport height minus button height and padding */
+    overflow-y: auto; /* Add vertical scrollbar when content exceeds max height */
+  }
+  
+  .back-arrow {
+    position: fixed; /* Fix the button at the top */
+    top: 20px;
+    left: 20px; 
+    background-color: #fff;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 999; /* Ensure button is above other content */
+  }
+  
+  .back-arrow:hover {
+    background-color: #0056b3;
+  }
+  
+  .about-container h1 {
+    font-size: 32px; /* Increase heading size for emphasis */
+    color: #333; /* Darken the text color for better readability */
+    margin-bottom: 20px; /* Add space between headings and paragraphs */
+  }
+  
+  .about-container h2 {
+    font-size: 24px;
+    color: #555; /* Darken the text color */
+    margin-bottom: 10px;
+  }
+  
+  .about-container p {
+    font-size: 18px; /* Increase font size for better readability */
+    line-height: 1.6; /* Add some space between lines for better readability */
+    color: #666; /* Darken the text color */
+    margin-bottom: 20px;
+  }

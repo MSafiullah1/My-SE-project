@@ -1,0 +1,243 @@
+html {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+/*To ensure page is covered entriely with the help of a div overlaid on top*/
+body {
+    margin: 0px;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+
+.overlay {
+    background-color: #ccc;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+}
+
+/*Forming the basic structure*/
+.wrapper {
+    height: 100%;
+    display: grid;
+    grid: 1fr / 1.1fr 5fr;
+    background-color: blueviolet;
+    border: 10px;
+}
+
+/*Sidebar. Grid/Flexbox combined*/
+.sidebar {
+    display: grid;
+    grid: 1fr 4fr 2fr/ 1fr;
+    background-color: rgb(241, 241, 254);
+    max-height: 100vh;
+    color: white;
+    align-items: center;
+}
+
+
+.logo>div {
+    display: flex;
+    align-items: center;
+    margin: 5%;
+}
+
+.logo-icon-container {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.logo>div>span {
+    margin-left: 15px;
+    font-size: xx-large;
+    font-weight: 700;
+    color: black;
+    font-family: 'Montserrat';
+}
+
+/*Sidebar pages*/
+.menu>div {
+    border-radius: 10px;
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+    /*  transition for smooth effect */
+}
+
+.menu>div:hover {
+    background-color: #d9e3f0;
+    /* Light grey background color on hover */
+}
+
+.menu>div>a {
+    margin-left: 10%;
+    color: #818184;
+    text-decoration: none;
+    font-family: 'Montserrat'
+
+}
+
+
+.menu>div.active>.icon {
+    color: rgb(52, 133, 247);
+    /* Change color on hover and when active for the icon */
+}
+
+.menu>div.active>a {
+    color: rgb(52, 133, 247);
+    /* Change color for active menu item */
+}
+
+/*The right page divided into the 3 sections - about, function cards, data table*/
+.contentPerf {
+    display: grid;
+    grid: 1fr 1.2fr 4fr / 1fr;
+    max-height: 100vh;
+    background-color: #FAFBFC;
+}
+
+/*About and Profile*/
+.header {
+    display: flex;
+    margin: 30px;
+    justify-content: right;
+    align-items: center;
+    border-bottom: 3px solid #EBEBFF;
+}
+
+.header>span {
+    margin-right: 60px;
+    margin-left: 30px;
+    color: #818184;
+}
+
+.header>a {
+    margin-right: 50px;
+    margin-left: 20px;
+    text-decoration: none;
+    font-family: 'Monsterrat';
+    font-size: x-large;
+    color: #818184;
+    transition: background-color 0.3s;
+}
+
+.header>a:hover {
+    border-radius: 10px;
+    background-color: #d9e3f0;
+    /* Light grey background color on hover */
+}
+
+/*Container for employee info*/
+.employeeInfo {
+    display: flex;
+    flex-direction: column;
+    overflow-x: scroll;
+    overflow-y: scroll;
+
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer and Edge */
+    }
+    
+    
+.employeeInfo::-webkit-scrollbar {
+display: none; /* Chrome, Safari, and Opera */
+}
+
+
+/* 3 rows in info*/
+.employeeInfo > div {
+    display: flex;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    align-items: center;
+}
+/*Each info div*/
+.employeeInfo > div > div{
+    display: flex;
+    margin-right: 10%;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0px;
+}
+
+.infoContainer {
+    font-size: 15px;
+    font-family: 'Source Sans 3';
+    font-weight: 600;
+    width: 200px;
+    background-color: #3485F7;
+    color: #EBEBFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-left: 20px;
+    min-width: fit-content;
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+
+.employeeHeading {
+    font-family: 'Source Sans 3';
+    font-weight: 800;
+    font-size: x-large;
+    color: #7D7D7D;
+}
+.employeePerformance {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 30px;
+    max-height: 65vh;
+}
+
+.infoType {
+    color: #284E91;
+}
+
+.kpiContainer {
+    display: flex;
+    flex-direction: column;
+    width: 75vw;
+    overflow-y:scroll;
+    scrollbar-width: none; /* Firefox */
+-ms-overflow-style: none; /* Internet Explorer and Edge */
+}
+
+
+.kpiContainer::-webkit-scrollbar {
+display: none; /* Chrome, Safari, and Opera */
+}
+
+.kpiNameBar {
+    display: flex;
+    font-family: 'Source Sans 3';
+    font-weight: 600;
+    background-color: #FFFFFF;
+    color: #7D7D7D;
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 20px;
+    margin-top: 2.5%;
+
+}
+
+.progressBar {
+    margin-right: 10%;
+}

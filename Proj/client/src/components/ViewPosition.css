@@ -1,0 +1,63 @@
+.view-position-wrapper {
+    background: white;
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 20px;
+    border-radius: 10px;
+    width: 800px; 
+    /* box-shadow: 0 5px 15px rgba(0,0,0,0.3); */
+  }
+
+  .view-position-wrapper h1 {
+    margin-bottom: 15px;
+  }
+
+  .position-accordion {
+    width: 100%;
+    align-items: center;
+  }
+
+  .position-accordion-btn {
+    display: flex; /* This is necessary for justify-content to work */
+    justify-content: space-between; /* This will space out the child elements */
+    align-items: center; /* This will vertically center the child elements */
+    background-color: #9cc0d8;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%; /* Adjust the width as necessary */
+    border: none;
+    outline: none;
+    transition: 0.4s;
+  }
+
+  .position-accordion-btn:hover {
+    background-color: #65889e;
+  }
+
+  .position-accordion-btn span {
+    font-size: 1pc;
+    color: rgb(82, 37, 26);
+  }
+
+  .position-accordion-btn span:last-child {
+    margin-left: auto; /* This will push the icon to the far right */
+  }
+  
+
+  .panel {
+    padding: 0 18px;
+    background-color: rgba(244, 235, 235, 0.882);
+    display: none;
+    overflow: hidden;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .panel-show {
+    padding: 0 18px;
+    background-color: rgba(244, 235, 235, 0.882);
+    overflow: hidden;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+  }

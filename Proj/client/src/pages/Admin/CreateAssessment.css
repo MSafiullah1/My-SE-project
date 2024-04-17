@@ -1,0 +1,282 @@
+html {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+/* To ensure page is covered entirely with the help of a div overlaid on top */
+body {
+    margin: 0px;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.overlay {
+    background-color: #ccc;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+}
+
+/* Forming the basic structure */
+.wrapperForm {
+    height: 100%;
+    display: grid;
+    grid: 1fr / 1.1fr 5fr;
+    background-color: blueviolet;
+    border: 10px;
+}
+
+/* Sidebar. Grid/Flexbox combined */
+.sidebar {
+    display: grid;
+    grid: 1fr 4fr 2fr/ 1fr;
+    background-color: rgb(241, 241, 254);
+    max-height: 100vh;
+    color: white;
+    align-items: center;
+}
+
+.logo>div {
+    display: flex;
+    align-items: center;
+    margin: 5%;
+}
+
+.logo-icon-container {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.logo>div>span {
+    margin-left: 15px;
+    font-size: xx-large;
+    font-weight: 700;
+    color: black;
+    font-family: 'Montserrat';
+}
+
+/* Sidebar pages */
+.menu>div {
+    border-radius: 10px;
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+    /*  transition for smooth effect */
+}
+
+.menu>div:hover {
+    background-color: #d9e3f0;
+    /* Light grey background color on hover */
+}
+
+.menu>div>a {
+    margin-left: 10%;
+    color: #818184;
+    text-decoration: none;
+    font-family: 'Montserrat';
+}
+
+.menu>div.active>.icon {
+    color: rgb(52, 133, 247);
+    /* Change color on hover and when active for the icon */
+}
+
+.menu>div.active>a {
+    color: rgb(52, 133, 247);
+    /* Change color for active menu item */
+}
+
+/* The right page divided into the 2 sections - about page, form interface */
+.contentForm {
+    display: grid;
+    grid: 1fr 4.7fr / 1fr;
+    max-height: 100vh;
+    background-color: #fafbfc;
+}
+
+/* About and Profile */
+.header {
+    display: flex;
+    margin: 30px;
+    justify-content: right;
+    align-items: center;
+    border-bottom: 3px solid #ebebff;
+}
+
+.header>span {
+    margin-right: 60px;
+    margin-left: 30px;
+    color: #818184;
+}
+
+.header>a {
+    margin-right: 50px;
+    margin-left: 20px;
+    text-decoration: none;
+    font-family: 'Monsterrat';
+    font-size: x-large;
+    color: #818184;
+    transition: background-color 0.3s;
+}
+
+.header>a:hover {
+    border-radius: 10px;
+    background-color: #d9e3f0;
+    /* Light grey background color on hover */
+}
+
+.main-body {
+    height: 100%;
+    font-family: 'Source Sans 3';
+
+}
+
+.form-heading {
+    background-color: white;
+    font-size: x-large;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../img/progress.jpg');
+
+}
+
+.form-heading h1 {
+    margin-left: 20px;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+}
+
+.form-heading svg {
+    margin-right: 10px;
+    color: white;
+}
+
+.feedback-form {
+    display: flex;
+    align-items: center;
+    max-height: 65vh;
+    justify-content: space-around;
+    margin-top: 20px;
+    font-family: 'Source Sans 3';
+}
+
+.feedback-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.feedback-form input[type='text'],
+.feedback-form textarea {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: 'Source Sans 3';
+    font-size: x-large;
+    border-radius: 20px;
+}
+
+.feedback-form textarea {
+    height: 70%;
+}
+
+.feedback-form textarea {
+    resize: vertical;
+}
+
+.give-rating {
+    margin-top: 20px;
+    font-family: 'Monsterrat';
+}
+
+.give-rating h2 {
+    margin-bottom: 10px;
+    font-family: 'Monsterrat';
+}
+
+.feedbackButton[type='submit'] {
+    background: #457fbf ;
+    border-radius: 999px;
+    box-shadow: rgb(21, 146, 212) 0 5px 5px -5px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+    height: 50px;
+    width: 300px;
+}
+
+button[type='submit']:hover {
+    background-color: #0b3e73 ;
+}
+
+/* .search-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: #0073b1;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+} */
+/* Add this new class to your CSS */
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input-group input[type='text'] {
+    flex-grow: 1; /* Input will fill up the available space */
+    margin-right: 10px; /* Add some space between the input and the button */
+}
+
+.search-btn {
+    /* Remove position absolute and other positioning styles, flexbox will handle it */
+    border: none;
+    background: #0073b1;
+    color: white;
+    padding: 10px 15px; /* Adjust padding as needed */
+    border-radius: 4px;
+    cursor: pointer;
+    /* Add some box-shadow for better UX */
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.15);
+}
+
+/* Style the button to be on the same line and size as input */
+.search-btn svg {
+    width: 20px; /* Adjust the size of the search icon as needed */
+    height: 20px;
+}

@@ -1,0 +1,266 @@
+html {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+/*To ensure page is covered entriely with the help of a div overlaid on top*/
+body {
+    margin: 0px;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+
+.overlay {
+    background-color: #ccc;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+}
+
+/*Forming the basic structure*/
+.wrapper {
+    height: 100%;
+    display: grid;
+    grid: 1fr / 1.1fr 5fr;
+    background-color: blueviolet;
+    border: 10px;
+}
+
+/*Sidebar. Grid/Flexbox combined*/
+.sidebar {
+    display: grid;
+    grid: 1fr 4fr 2fr/ 1fr;
+    background-color: rgb(241, 241, 254);
+    max-height: 100vh;
+    color: white;
+    align-items: center;
+}
+
+
+.logo>div {
+    display: flex;
+    align-items: center;
+    margin: 5%;
+}
+
+.logo-icon-container {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.logo>div>span {
+    margin-left: 15px;
+    font-size: xx-large;
+    font-weight: 700;
+    color: black;
+    font-family: 'Montserrat';
+}
+
+/*Sidebar pages*/
+.menu>div {
+    border-radius: 10px;
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+    /*  transition for smooth effect */
+}
+
+.menu>div:hover {
+    background-color: #d9e3f0;
+    /* Light grey background color on hover */
+}
+
+.menu>div>a {
+    margin-left: 10%;
+    color: #818184;
+    text-decoration: none;
+    font-family: 'Montserrat'
+
+}
+
+
+.menu>div.active>.icon {
+    color: rgb(52, 133, 247);
+    /* Change color on hover and when active for the icon */
+}
+
+.menu>div.active>a {
+    color: rgb(52, 133, 247);
+    /* Change color for active menu item */
+}
+
+/*The right page divided into the 3 sections - about, function cards, data table*/
+.contentDashClient {
+    display: grid;
+    grid: 1fr 5.0fr / 1fr;
+    max-height: 100vh;
+    background-color: #FAFBFC;
+}
+
+/*About and Profile*/
+.header {
+    display: flex;
+    margin: 30px;
+    justify-content: right;
+    align-items: center;
+    border-bottom: 3px solid #EBEBFF;
+}
+
+.header>span {
+    margin-right: 60px;
+    margin-left: 30px;
+    color: #818184;
+}
+
+.header>a {
+    margin-right: 50px;
+    margin-left: 20px;
+    text-decoration: none;
+    font-family: 'Monsterrat';
+    font-size: x-large;
+    color: #818184;
+    transition: background-color 0.3s;
+}
+
+.header>a:hover {
+    border-radius: 10px;
+    background-color: #d9e3f0;
+    /* Light grey background color on hover */
+}
+
+.positionsDashboard{
+    max-height: 83vh;
+    display: grid;
+    grid: 1fr 1fr 5fr / 1fr;
+    border: solid 1px black;
+}
+
+.positionStatus{
+    display: flex;
+    justify-content: space-around;
+}
+.status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Source Sans 3';
+    font-weight: 900;
+    font-size: xx-large;
+}
+.status > div{
+    margin-left: 30%;
+    margin-right: 30%;
+    white-space: nowrap;
+}
+.positionCardsAll {
+    display: flex;
+    overflow-x: scroll;
+}
+
+.positionItem {
+    min-width: 30%;
+    color: white;
+    border: 10px solid white;
+    border-radius: 5px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow */
+    height: auto; /* Adjusted from 80% to auto */
+    width: 30%;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column; /* Changed to column layout */
+    justify-content: center;
+    align-items: center; /* Center align items horizontally */
+    
+    background-image: url('../../img/newpos.jpg');
+    background-size: cover;
+    
+
+}
+
+#posTitle {
+    color: #4481c0;
+}
+
+#posHolderAll {
+    color: #818184;
+}
+
+
+.personImage {
+    width: 120px; /* Adjust width of the image */
+    height: 120px; /* Adjust height of the image */
+    border-radius: 50%; /*Make the image round */
+    margin-bottom: 10px; /* Add some space between image and text */
+    background-image: url('../../img/dp.jpg');
+    background-size: contain;
+
+}
+
+.personName {
+    margin-bottom: 5px; /* Add some space between name and position ID */
+    font-weight: bold; /* Bold font for the name */
+    font-size: xx-large; /* Adjust font size of the name */
+}
+
+.positionID {
+    font-size: 18px; /* Adjust font size of the position ID */
+}
+
+.positionItem:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    /* Shadow gets larger on hover */
+    transform: translateY(-5px);
+    /* Slight lift effect */
+}
+
+
+.positionContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg-image {
+    opacity: 0.3;
+}
+
+.position-modal {
+    z-index: 1046; /* Sit on top */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%; /* Full width */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+}
+
+.close-position-modal {
+    cursor: pointer;
+    font-size: 40px;
+    color: red; /* Red color for the times character */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

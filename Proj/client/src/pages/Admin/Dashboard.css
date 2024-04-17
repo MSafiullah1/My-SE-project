@@ -1,0 +1,485 @@
+html {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+/*To ensure page is covered entriely with the help of a div overlaid on top*/
+body {
+    margin: 0px;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+
+.overlay {
+    background-color: #ccc;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+}
+
+/*Forming the basic structure*/
+.wrapper {
+    height: 100%;
+    display: grid;
+    grid: 1fr / 1.1fr 5fr;
+    background-color: blueviolet;
+    border: 10px;
+}
+
+/*Sidebar. Grid/Flexbox combined*/
+.sidebar {
+    display: grid;
+    grid: 1fr 4fr 2fr/ 1fr;
+    background-color: rgb(241, 241, 254);
+    max-height: 100vh;
+    color: white;
+    align-items: center;
+}
+
+
+.logo>div {
+    display: flex;
+    align-items: center;
+    margin: 5%;
+}
+
+.logo-icon-container {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.logo>div>span {
+    margin-left: 15px;
+    font-size: xx-large;
+    font-weight: 700;
+    color: black;
+    font-family: 'Montserrat';
+}
+
+/*Sidebar pages*/
+.menu>div {
+    border-radius: 10px;
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+    /*  transition for smooth effect */
+}
+
+.menu>div:hover {
+    background-color: #d9e3f0;
+    /* Light grey background color on hover */
+}
+
+.menu>div>a {
+    margin-left: 10%;
+    color: #818184;
+    text-decoration: none;
+    font-family: 'Montserrat'
+
+}
+
+
+.menu>div.active>.icon {
+    color: rgb(52, 133, 247);
+    /* Change color on hover and when active for the icon */
+}
+
+.menu>div.active>a {
+    color: rgb(52, 133, 247);
+    /* Change color for active menu item */
+}
+
+/*The right page divided into the 3 sections - about, function cards, data table*/
+.contentAdminDash {
+    display: grid;
+    grid: 1fr 1.2fr 4fr / 1fr;
+    max-height: 100vh;
+    background-color: #FAFBFC;
+}
+
+/*About and Profile*/
+.header {
+    display: flex;
+    margin: 30px;
+    justify-content: right;
+    align-items: center;
+    border-bottom: 3px solid #EBEBFF;
+}
+
+.header>span {
+    margin-right: 60px;
+    margin-left: 30px;
+    color: #818184;
+}
+
+.header>a {
+    margin-right: 50px;
+    margin-left: 20px;
+    text-decoration: none;
+    font-family: 'Monsterrat';
+    font-size: x-large;
+    color: #818184;
+    transition: background-color 0.3s;
+}
+
+.header>a:hover {
+    border-radius: 10px;
+    background-color: #d9e3f0;
+    /* Light grey background color on hover */
+}
+
+/* Employee function cards - High potential, all, at risk*/
+.employeeFunctions {
+    display: flex;
+    justify-content: space-around;
+}
+
+.employeeFunction {
+    width: 18%;
+    height: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 10px solid rgb(52, 133, 247);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+}
+
+.func {
+    margin-top: 5px;
+    font-family: 'Source Sans 3';
+    font-weight: 500;
+    font-size: larger;
+    color: #818184;
+
+}
+
+.countAndView {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 90%;
+    width: 100%;
+}
+
+.funcCount {
+    font-size: 65px;
+    color: rgb(40, 78, 145);
+    font-family: 'Source Sans 3';
+    font-weight: 900;
+}
+
+.iconAndView {
+    display: flex;
+    flex-direction: column;
+}
+
+.iconAndView>label {
+    margin-top: 10px;
+    text-decoration: none;
+    font-family: 'Source Sans 3';
+    font-size: larger;
+    font-weight: 700;
+    color: #818184;
+    transition: background-color 0.3s;
+
+}
+
+.iconAndView>label:hover {
+    border-radius: 10px;
+    background-color: #d9e3f0;
+    /* Light grey background color on hover */
+}
+
+
+.searchAndAdd {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchAndAdd input[type="text"] {
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    margin-left: 50px;
+    width: 300px;
+}
+
+
+/*Used from the internet*/
+.searchAndAdd button {
+    margin-right: 50px;
+    background: rgb(52, 133, 247);
+    border-radius: 999px;
+    box-shadow: rgb(21, 146, 212) 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+    height: 50px;
+}
+
+
+.searchAndAdd button:hover {
+    background-color: #0056b3;
+}
+
+/* Employee data table*/
+.employeeData {
+    /* Enable vertical scrolling */
+    max-height: 50vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(52, 133, 247) white;
+}
+
+.employeeData::-webkit-scrollbar {
+    width: 14px;
+    border-radius: 10px;
+    background-color: transparent; /* Color of the track (scrollbar background) */
+}
+.employeeData::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+}
+
+
+.employeeData table {
+    width: 90%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    /* Adjust the spacing between rows */
+}
+
+.employeeData th,
+.employeeData td {
+    padding: 20px;
+    text-align: center;
+    margin: 20px;
+}
+
+.employeeData th {
+    background-color: #FFFFFF;
+    font-weight: bold;
+    color: #284E91;
+}
+
+.employeeData td button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.employeeData table tbody tr {
+    border-radius: 60px;
+}
+
+.employeeData td button:hover {
+    background-color: #f2f2f2;
+    border-radius: 100px;
+
+}
+
+.employeeData tr {
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 60px;
+
+}
+
+.employeeData tr:hover {
+    background-color: #f2f2f2;
+
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContent {
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 30vw;
+    height: 70vh;
+    font-family: 'Source Sans 3';
+    color: #68686d;
+    font-weight: 800;
+}
+
+#threshold {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.modalContent #positionID {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 60px;
+    margin-top: 20px;
+}
+
+
+
+#changeThresholdButton
+{
+    background: rgb(52, 133, 247);
+    border-radius: 999px;
+    box-shadow: rgb(21, 146, 212) 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    word-break: break-word;
+    border: 0;
+    height: 50px;
+    align-self: center;
+}
+
+.closeModal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 50px;
+    color: #ff0000;
+}
+
+.addEmployeeForm {
+    display: grid;
+    gap: 5px;
+    height: 100%;
+    font-family: 'Source Sans 3';
+}
+
+.formGroup {
+    display: grid;
+    gap: 5px;
+}
+
+.formGroup label {
+    font-weight: bold;
+}
+
+.formGroup input,
+.formGroup select {
+    width: 100%;
+    padding: 4px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.formGroup input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formGroup input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#addEmployeeButton {
+
+    margin-bottom: 0px;
+    margin-top: 5%;
+    background: rgb(52, 133, 247);
+    border-radius: 999px;
+    box-shadow: rgb(21, 146, 212) 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    word-break: break-word;
+    border: 0;
+    height: 50px;
+
+}
+
+#addEmployeeButton:hover {
+
+    margin-bottom: 0px;
+    margin-top: 5%;
+    background: rgb(5, 48, 108);
+    border-radius: 999px;
+    box-shadow: rgb(21, 146, 212) 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    word-break: break-word;
+    border: 0;
+    height: 50px;
+
+}

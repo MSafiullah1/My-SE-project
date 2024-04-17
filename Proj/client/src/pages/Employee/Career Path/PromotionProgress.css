@@ -1,0 +1,328 @@
+html {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+/*To ensure page is covered entriely with the help of a div overlaid on top*/
+body {
+    margin: 0px;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+
+.overlay {
+    background-color: #ccc;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+}
+
+/*Forming the basic structure*/
+.wrapper {
+    height: 100%;
+    display: grid;
+    grid: 1fr / 1.1fr 5fr;
+    background-color: blueviolet;
+    border: 10px;
+}
+
+/*Sidebar. Grid/Flexbox combined*/
+.sidebar {
+    display: grid;
+    grid: 1fr 4fr 2fr/ 1fr;
+    background-color: rgb(241, 241, 254);
+    max-height: 100vh;
+    color: white;
+    align-items: center;
+}
+
+
+.logo>div {
+    display: flex;
+    align-items: center;
+    margin: 5%;
+}
+
+.logo-icon-container {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.logo>div>span {
+    margin-left: 15px;
+    font-size: xx-large;
+    font-weight: 700;
+    color: black;
+    font-family: 'Montserrat';
+}
+
+/*Sidebar pages*/
+.menu>div {
+    border-radius: 10px;
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+    /*  transition for smooth effect */
+}
+
+.menu>div:hover {
+    background-color: #d9e3f0;
+    /* Light grey background color on hover */
+}
+
+.menu>div>a {
+    margin-left: 10%;
+    color: #818184;
+    text-decoration: none;
+    font-family: 'Montserrat'
+
+}
+
+
+.menu>div.active>.icon {
+    color: rgb(52, 133, 247);
+    /* Change color on hover and when active for the icon */
+}
+
+.menu>div.active>a {
+    color: rgb(52, 133, 247);
+    /* Change color for active menu item */
+}
+
+/*The right page divided into the 3 sections - about, function cards, data table*/
+.contentDashClientProgress {
+    display: grid;
+    grid: 1fr 5fr / 1fr;
+    max-height: 100vh;
+    background-color: #FAFBFC;
+    overflow-y: scroll;
+}
+
+/*About and Profile*/
+.header {
+    display: flex;
+    margin: 30px;
+    justify-content: right;
+    align-items: center;
+    border-bottom: 3px solid #EBEBFF;
+}
+
+.header>span {
+    margin-right: 60px;
+    margin-left: 30px;
+    color: #818184;
+}
+
+.header>a {
+    margin-right: 50px;
+    margin-left: 20px;
+    text-decoration: none;
+    font-family: 'Monsterrat';
+    font-size: x-large;
+    color: #818184;
+    transition: background-color 0.3s;
+}
+
+.header>a:hover {
+    border-radius: 10px;
+    background-color: #d9e3f0;
+    /* Light grey background color on hover */
+}
+
+.progressWrapper {
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
+}
+
+@keyframes progressAnimation {
+    0% {
+        stroke-dashoffset: 250;
+    }
+    100% {
+        stroke-dashoffset: calc(250 - (250 * var(--progress) / 100));
+    }
+}
+
+.CircularProgressbar svg circle {
+    animation: progressAnimation 1s ease forwards;
+}
+
+
+.CircularProgressbar {
+    max-height: 100%;
+}
+
+@keyframes barAnimation {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: var(--progress);
+    }
+}
+
+/* Apply animation to the bar chart */
+.Bar .bar {
+    animation: barAnimation 1s ease forwards;
+}
+
+.Bar {
+    max-height: 100%;
+}
+
+
+.charts {
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.section h2 {
+    margin-bottom: 10px;
+    /* Add space between heading and content */
+}
+
+.chartCircular {
+    width: 100%;
+    max-height: 30vh;
+    margin-right: 5%;
+    transition: transform 0.3s ease;
+
+
+}
+
+.chartBar {
+    max-height: 30vh;
+    width: 100%;
+    margin-left: 5%;
+    transition: transform 0.3s ease;
+
+}
+
+
+#positionTitle{
+    font-weight: 900;
+    font-family: 'Source Sans 3';
+    font-size: x-large;
+    color: #f0f0f0;
+}
+
+
+.sectionSkills{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2%;
+}
+
+.skillsContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.skillsContainer > div{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.skill {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.skill:hover {
+    transform: translateY(-5px);
+}
+
+
+.promotionalSkills{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.promotionalPosition{
+    display: flex;
+    justify-content: space-around;
+}
+
+.progContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+
+.cards {
+    display: grid; 
+    grid-gap: 20px; 
+}
+
+.card {
+    width: 100%; 
+    height: fit-content;
+    background-image: url('../../img/growth.png');
+    background-size: cover;
+
+    background-color: rgb(67, 185, 225);
+    display: flex; 
+    flex-direction: column;
+    border-radius: 50px;
+    margin-bottom: 10px;
+    border-color: 10px solid #f0f0f0;
+    animation: slideIn 0.5s ease forwards;
+
+}
+
+.card:hover{
+    transform: translateY(-5px);
+
+}
+
+
+.info{
+    display: flex;
+    width: 100%;
+    flex-wrap:wrap;
+    justify-content: space-around;
+}
+
+.cardHeadings{
+    font-size: x-large;
+    font-weight: 900;
+    color: #02023b;
+    margin-bottom: 10px;
+    font-family: 'Source Sans 3';
+}
+
+
+.sectionHeadings {
+
+    margin-top: 10px;
+    font-size: x-large;
+    font-weight: 900;
+    color: #808083;
+    margin-bottom: 10px;
+    font-family: 'Source Sans 3';
+}

@@ -1,0 +1,122 @@
+/* .metrics-container {
+    width: 100%;
+}
+
+.metrics-wrapper {
+    background-color: white;
+}
+
+
+.metric-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;  
+    background: #678571;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.metric-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: #04AA6D;
+    cursor: pointer;
+  }
+  
+  .metric-slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #04AA6D;
+    cursor: pointer;
+  } */
+
+  .metrics-wrapper {
+    background: white;
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 20px;
+    border-radius: 10px;
+    width: 900px; /* Could be more or less, depending on screen size */
+    /* box-shadow: 0 5px 15px rgba(0,0,0,0.3); */
+  }
+  
+  .metrics-wrapper h3 {
+    color: #333;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .metrics-wrapper h1 {
+    color: #333;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .metrics-container {
+    margin: 20px 0;
+    padding: 10px;
+    /* background: #f9f9f9; */
+    border-radius: 5px;
+  }
+  
+  .metric-slider {
+    -webkit-appearance: none;
+    width: 90%;
+    height: 15px;
+    border-radius: 5px;   
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .metric-slider:hover {
+    opacity: 1;
+  }
+  
+  .metric-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: #6499b0;
+    cursor: pointer;
+  }
+  
+  .metric-slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+  }
+
+  .save-button-metric {
+    background: #6499b0;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  .save-button-metric:hover {
+    background-color: #266985; /* Darker green on hover */
+  }

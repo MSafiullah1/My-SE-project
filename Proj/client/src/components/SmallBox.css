@@ -1,0 +1,82 @@
+.small-box {
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    margin: 20px;
+    overflow: scroll;
+  }
+  
+  .small-box-heading {
+    margin: 0 0 10px 0;
+    padding: 0;
+    text-align: center;
+    font-size: 26px;
+    color: #333;
+  }
+  
+  .small-box-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+
+  .small-box-input-about {
+    width: 100%;
+    /* padding: 8px; */
+    padding-bottom: 9pc;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+
+  .small-box button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    margin-left: 2pc;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    display: inline-block;
+  }
+
+  .list-input input {
+    /* width: 100%; */
+    padding: 8px;
+  }
+
+  .list-input button {
+    background-color: #007bff;
+    padding-left: 10px;
+    margin-left: 1pc;
+  }
+
+  .button-class button {
+    background-color: #cd1919;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    margin-left: 2pc;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    display: inline-block;
+  }
+
+  .save-button-class button {
+    background-color: #007bff;
+
+  }
+
+  .cancel-button-class button {
+    background-color: #cd1919;
+  }

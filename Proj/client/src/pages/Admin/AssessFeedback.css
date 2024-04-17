@@ -1,0 +1,185 @@
+.modalOverlay {
+    position: fixed;
+    /* position: relative; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.modalContent {
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 500px;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    overflow: hidden;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.closeModal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 24px;
+    /* Ensure this is not overridden by other styles */
+}
+
+.closeModal:hover {
+    color: #333; /* Darker color on hover for better visibility */
+}
+
+
+.modalBody {
+    overflow-y: auto;
+    padding-right: 10px; /* Adjust based on scrollbar visibility */
+    flex-grow: 1;
+}
+
+.addEmployeeForm {
+    font-size: 16px;
+}
+
+.formGroup1 {
+    margin-bottom: 20px;
+}
+
+.formGroup1 label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.formGroup1 h3 {
+    color: #555;
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0 0 10px 0;
+}
+
+/* Star Ratings */
+.faStar {
+    margin: 0 2px;
+    font-size: 24px; /* Adjust size of stars */
+}
+
+/* Adjustments for rating container */
+.formGroup1 div {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+/* Make the formGroup container flex to align label and content */
+.formGroup1 {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+/* Style adjustments for the rating and feedback response */
+.formGroup1>div {
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .modalContent {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .formGroup1 label, .formGroup1 h3 {
+        font-size: 0.9em; /* Slightly reduce font size on smaller screens */
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+.employeeFunctionss {
+    width: 38%;
+    height: 90%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 10px solid rgb(52, 133, 247);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    margin-left: 5%;
+}
+
+.feedbackHeader{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* align-items: center; */
+    text-align: left;
+    /* margin-bottom: 20px; */
+    /* border-bottom: 2px solid #eee; */
+    /* padding-bottom: 10px; */
+    padding-left: 6%;
+    padding-right: 10%;
+}
+
+.feedbackHeader h1{
+    color: rgb(52, 133, 247);
+    font-size: 3.5em;
+    font-weight: normal;
+    margin: 0 0 10px 0;
+    text-align: left;
+    margin-right: 100px;
+}
+
+.form-heading {
+    background-color: white;
+    font-size: x-large;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.form-heading h1 {
+    margin-left: 20px;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+}
+
+.form-heading svg {
+    margin-right: 10px;
+    color: white;
+}

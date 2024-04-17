@@ -1,0 +1,236 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f3f3;
+    /* Light grey background, similar to LinkedIn */
+}
+
+.resetPwd-container {
+    width: 100%;
+    max-width: 400px;
+    background:  #9ccff4;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    margin: 20px;
+    margin-left: 850px;
+    text-align: left;
+    display: flex;
+}
+
+.reset-box h1 {
+    color: #0073b1;
+    /* LinkedIn blue color */
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.reset-box h3 {
+    color: #111111;
+    /* LinkedIn blue color */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.reset-box {
+    color: #0073b1;
+    /* LinkedIn blue color */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.input-group input {
+    width: calc(100% - 40px);
+    /* Input width considering button */
+    padding: 10px;
+    margin: 5px 0;
+    border: 2px solid #0073b1;
+    /* LinkedIn blue border */
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.input-group input[disabled] {
+    background-color: #e9ecef;
+    /* A light grey background to indicate non-editability */
+    color: grey;
+    /* Grey text color for the disabled input */
+    /* other styles as needed */
+}
+
+.search-btn {
+    position: absolute;
+    right: 28px;
+    top: 10px;
+    border: none;
+    background: #0073b1;
+    /* LinkedIn blue color */
+    color: white;
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.non-editable-field {
+    background-color: #eef3f8;
+    /* Non-editable field color, light grey */
+    border: 1px solid #cfcfcf;
+    color: #000;
+    padding: 9px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.forgot-password {
+    color: #305496;
+    text-decoration: none;
+    display: block;
+    margin-top: 1rem;
+}
+
+.signup-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #305496;
+    /* A shade of blue */
+    color: white;
+    cursor: pointer;
+}
+
+.signup-btn:hover {
+    background-color: #27407f;
+    /* A darker shade of blue for hover effect */
+}
+
+.security-image {
+    width: 40px;
+    /* Your desired size */
+    height: 40px;
+    /* Your desired size */
+    border: 2px solid #000;
+    /* Adjust the color and width of the border as needed */
+    margin: 5px;
+    /* Adjust the margin as needed */
+    display: inline-block;
+    /* or flex if you prefer */
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    /* Optional: adds shadow for depth */
+    border-radius: 4px;
+    /* Optional: if you want rounded corners */
+}
+
+.security-image.selected {
+    border: 4px solid #305496;
+    /* Highlight with a blue border */
+    /* Add any other styles you want for the selected state */
+}
+
+/* ... your existing CSS */
+
+.password-criteria {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.password-criteria p {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.password-criteria ul {
+    list-style: none;
+    padding: 0;
+}
+
+.password-criteria li {
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 14px;
+}
+
+.password-criteria li.valid {
+    color: #28a745;
+    /* Change to a color indicating 'valid', like green */
+}
+
+.password-criteria li:before {
+    content: '○';
+    /* Default bullet point */
+    color: #ccc;
+    /* Color for not valid */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.password-criteria li.valid:before {
+    content: '✔';
+    /* Unicode for check mark */
+    color: #28a745;
+    /* Green color to indicate valid criteria */
+    padding-left: 2pc;
+}
+
+/* ... your existing styles ... */
+
+.password-mismatch {
+    color: #ff0000;
+    /* red color for error messages */
+    font-size: 0.8em;
+    /* smaller font size for the error message */
+    margin-top: 5px;
+}
+
+.reset-btn {
+    /* styles for reset password button */
+    background-color: #0056b3;
+    /* Example blue color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    /* Full width button */
+    margin-top: 20px;
+    /* Spacing above the button */
+}
+
+.reset-btn:hover {
+    background-color: #003d82;
+    /* Darker blue on hover */
+}
+
+/* ... any additional styles ... */
+
+.login {
+    color: #666;
+}
+
+.search-btn-e {
+    position: absolute;
+    right: 2pc;
+    bottom: 1.1pc;
+    color: #27407f;
+}
