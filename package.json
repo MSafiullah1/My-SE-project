@@ -5,8 +5,8 @@
         "node": "20.x"
     },
     "scripts": {
-        "start": "npn run dev",
+        "start": "npm run dev",
         "build": "npm run build:client",
-        "build:client": "cd Proj/client && npm install && npm install --save-dev vite && npm run build"
+        "build:client": "cd Proj/client&& npm install && npm run build"
     }
 }
