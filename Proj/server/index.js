@@ -10,7 +10,7 @@ const cookieParser = require('cookie-parser')
 
 
 app.use(cors({
-    origin: 'true',
+    origin: true,
     credentials: true
 }))
 
