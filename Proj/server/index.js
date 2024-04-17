@@ -31,6 +31,6 @@ app.use(express.urlencoded({ limit: '50mb', extended: true, parameterLimit: 5000
 
 
 app.use('/', require('./routes/authRoutes'))
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 // const port = 8000
-app.listen(port, '0.0.0.0' ,() => console.log('Server is running on port', port))
+app.listen((process.env.PORT || 5000), '0.0.0.0' ,() => console.log('Server is running on port', port))
