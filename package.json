@@ -5,10 +5,8 @@
         "node": "20.x"
     },
     "scripts": {
-        "start": "node index.js",
-        "start:server": "cd Proj/server && npm start",
-        "build": "npm run build:client && npm run build:server",
-        "build:client": "echo 'Building client...'",
-        "build:server": "echo 'Building server...'"
+        "start": "npn run dev",
+        "build": "npm run build:client",
+        "build:client": "cd Proj/client && npm install && npm run build"
     }
 }
