@@ -5,8 +5,8 @@
         "node": "20.x"
     },
     "scripts": {
+        "build": "vite build",
         "start": "npm run dev",
-        "build": "npm run build:client",
         "build:client": "cd Proj/client&& npm install && npm run build"
     }
 }
