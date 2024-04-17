@@ -9,6 +9,10 @@ const app = express()
 const cookieParser = require('cookie-parser')
 
 
+app.use(cors({
+    origin: 'true',
+    credentials: true
+}))
 
 // database connection
 mongoose.connect(process.env.MONGO_URL)
