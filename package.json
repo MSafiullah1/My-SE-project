@@ -7,6 +7,6 @@
     "scripts": {
         "build": "vite build",
         "start": "npm run dev",
-        "build:client": "cd Proj/client&& npm install && npm run build"
+        "start:client": "cd Proj/client&& npm install && npm run build"
     }
 }
