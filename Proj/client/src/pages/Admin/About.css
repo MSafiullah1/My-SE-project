@@ -4,6 +4,13 @@
     padding: 20px; /* Add padding for better spacing */
     max-height: calc(100vh - 40px); /* Set max height to viewport height minus button height and padding */
     overflow-y: auto; /* Add vertical scrollbar when content exceeds max height */
+    height: 100vh;
+    opacity: 0.95;
+  }
+
+
+  .body .about-container{
+    background-color: #0056b3;
   }
   
   .back-arrow {

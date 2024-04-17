@@ -1,11 +1,12 @@
 {
-    "name": "succession-planning-app",
-    "version": "1.0.0",
-    "engines": {
-        "node": "20.x"
-    },
-    "scripts": {
-        "start": "npm run dev:client",
-        "start:client": "cd Proj/client && npm install && npm run build"
-    }
+  "name": "succession-plannin-app",
+  "version": "1.0.0",
+  "engines": {
+      "node": "20.x"
+  },
+  "scripts": {
+      "start": "npm run dev:client",
+      "start:client": "cd Proj/client && npm install && npm run build"
+  }
 }
+  

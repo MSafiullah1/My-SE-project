@@ -11,14 +11,14 @@ import { useLogout } from '../../hooks/useLogout';
 export default function AdminFeedback() {
     const location = useLocation();
     const { logout } = useLogout()
-    
-    const { authenticatedUser, no, path, dispatch} = useUserContext()
+
+    const { authenticatedUser, no, path, dispatch } = useUserContext()
     const navigate = useNavigate();
     const allUserInfo = JSON.parse(localStorage.getItem('user'));
     const user = allUserInfo.name
 
     const menuItems = [
-        { name: "Employee Development", icon: faHouse, margin: 0, path: "/dashboard" },
+        { name: "Dashboard", icon: faHouse, margin: 5, path: "/dashboard" },
         { name: "Assess Feedback", icon: faFileArrowDown, margin: 12, path: "/admin_feedback" },
         { name: "Create Assessment", icon: faFileArrowUp, margin: 10, path: "/admin_feedback/create_assessment" },
         { name: "Employee Data", icon: faStreetView, margin: 3, path: "/employee_data" },
@@ -30,7 +30,7 @@ export default function AdminFeedback() {
 
     const handleMenuItemClick = (path, e) => {
         e.preventDefault()
-        navigate(path, { state: { name: user,userInfo:allUserInfo } });
+        navigate(path, { state: { name: user, userInfo: allUserInfo } });
     };
 
     const isActive = (path) => {
@@ -39,9 +39,9 @@ export default function AdminFeedback() {
 
     useEffect(() => {
         document.title = 'Assess Feedback'
-        dispatch({type: 'LOGIN', payload: user, no: 2, path: location.pathname})
-        localStorage.setItem('path' ,JSON.stringify(location.pathname))
-    },[])
+        dispatch({ type: 'LOGIN', payload: user, no: 2, path: location.pathname })
+        localStorage.setItem('path', JSON.stringify(location.pathname))
+    }, [])
 
     return (
         <div className='overlay'>
@@ -66,6 +66,8 @@ export default function AdminFeedback() {
                 </div>
                 <div className='contentDashClient'>
                     <div className='header'>
+                        <a href="" onClick={(e) => handleMenuItemClick('/aboutAdmin', e)}>About</a>
+                        <span>|</span>
                         <FontAwesomeIcon icon={faUser} size='xl' color='rgb(196,196,202)' />
                         <a href="" onClick={(e) => handleMenuItemClick('/AdminProfile', e)}>{user}</a>
                         <button

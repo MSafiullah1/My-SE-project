@@ -57,6 +57,7 @@ export default function ComplaintForm() {
 	// }, [allUserInfo]); // Depend on `allUserInfo`
 
 	useEffect(() => {
+		document.title = 'Complaint Form'
 		dispatch({ type: 'LOGIN', payload: user, no: 1, path: location.pathname })
 		localStorage.setItem('path', JSON.stringify(location.pathname))
 	}, []); // Empty array means it will only run once when component mounts

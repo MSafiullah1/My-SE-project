@@ -36,6 +36,7 @@ export default function AvailablePositions() {
     const [empFetched,setEmpFetched] = useState(0)
     
     useEffect(() => {
+        document.title = 'Career Path - Positions'
         dispatch({type: 'LOGIN', payload: allUserInfo, no: 1, path: location.pathname})
         localStorage.setItem('path' ,JSON.stringify(location.pathname))
     }, [])

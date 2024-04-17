@@ -41,6 +41,7 @@ export default function Courses() {
     };
 
     useEffect(() => {
+        document.title = 'Development Plans - Courses'
         dispatch({type: 'LOGIN', payload: user, no: 1, path: location.pathname})
         localStorage.setItem('path' ,JSON.stringify(location.pathname))
         axios.get('/dashboard-position-titles')
@@ -187,20 +188,25 @@ export default function Courses() {
                         <div className="coursesColumns">
                             <h2>Recommended Courses 📝</h2>
                             <ul className="recommendedCourses">
-                            
-                            {rem_all_courses_offered.map((course, index) => (
+                            {rem_Courses_for_position.length > 0 ? (
+
+                            rem_Courses_for_position.map((course, index) => (
                                 <li key={index}>
                                 <h4>Course Name: {course}</h4>
                                 <div>Course ID: {getCourseId(course)}</div>
                                 <div>Course Duration: {getCourseDuration(getCourseId(course))}</div>
-                                <div>Course details: {getCourseDetails(getCourseId(course))}</div>
-                                
+                                <div>Course details: {getCourseDetails(getCourseId(course))}</div> 
                               </li>
-                            ))}
+                               ))): (
+                                <li>
+                                <div>You have completed all the Courses for your position.</div>
+                                </li>
+                              )}
                             </ul>
                             <h2>Completed Courses ✅</h2>
-                            <ul className="completedCourses">  
-                            {completedCourses_for_position.map((course, index) => (
+                            <ul className="completedCourses"> 
+                            {completedCourses_for_position.length > 0 ? ( 
+                            completedCourses_for_position.map((course, index) => (
                                 <li key={index}>
                                 <h4>Course Name: {course}</h4>
                                 <div>Course ID: {getCourseId(course)}</div>
@@ -208,7 +214,11 @@ export default function Courses() {
                                 <div>Course details: {getCourseDetails(getCourseId(course))}</div>
 
                             </li>
-                            ))}
+                                ))): (
+                            <li>
+                            <div>You have not completed any course yet.</div>
+                            </li>
+                          )}
                             </ul>
                         </div>
                         </div>

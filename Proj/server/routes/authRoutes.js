@@ -52,12 +52,12 @@ const { viewFeedbacks, viewComplaints, viewAssignments } = require("../controlle
 
 
 //middleware
-router.use(
-    cors({
-        credentials: true,
-        origin: "http://localhost:5173",
-    })
-);
+// router.use(
+//     cors({
+//         credentials: true,
+//         origin: "http://localhost:5173",
+//     })
+// );
 
 // router.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 // router.use(bodyParser());

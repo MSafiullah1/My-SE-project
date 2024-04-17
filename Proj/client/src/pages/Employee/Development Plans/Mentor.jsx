@@ -72,6 +72,7 @@ export default function Mentor() {
     // Get list of available mentors
     const [availableMentors, setAvailableMentors] = useState([]);
     useEffect(() => {
+        document.title = 'Development Plans - Mentors'
         dispatch({type: 'LOGIN', payload: user, no: 1, path: location.pathname})
         localStorage.setItem('path' ,JSON.stringify(location.pathname))
         if (!mentorID) {

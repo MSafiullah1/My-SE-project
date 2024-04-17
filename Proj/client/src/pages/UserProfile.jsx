@@ -49,6 +49,7 @@ export default function UserProfile() {
     }
 
     useEffect(() => {
+        document.title = 'User Profile'
         dispatch({type: 'LOGIN', payload: user, no: 1, path: location.pathname})
         localStorage.setItem('path' ,JSON.stringify(location.pathname))
         getPositionData()

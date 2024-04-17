@@ -55,6 +55,7 @@ export default function PromotionProgress() {
 
 
     useEffect(() => {
+        document.title = 'Career Path - Promotion Progress'
         dispatch({type: 'LOGIN', payload: allUserInfo, no: 1, path: location.pathname})
         localStorage.setItem('path' ,JSON.stringify(location.pathname))
         axios.get('/dashboard-employees')
@@ -265,7 +266,7 @@ export default function PromotionProgress() {
 
                 data: [allUserInfo.attendance_rate * 100, allUserInfo.punctuality * 100, allUserInfo.efficiency * 100, allUserInfo.task_completion_rate * 100, getWorkshopCompletion() * 100, getCourseCompletion() * 100, allUserInfo.professionalism * 100, allUserInfo.leadership * 100, allUserInfo.collaboration * 100],
 
-                backgroundColor: 'rgba(150, 150, 150, 0.2)',
+                backgroundColor: '#30e257',
                 borderColor: 'rgba(150, 132, 132, 1)',
                 borderWidth: 2,
             },
@@ -451,8 +452,8 @@ export default function PromotionProgress() {
                                             pathTransitionDuration: 0.5,
 
                                             // Colors
-                                            pathColor: `rgba(67, 185, 225, 0.9)`,
-                                            textColor: '#c4c4cc',
+                                            pathColor: `#30e257`,
+                                            textColor: 'rgb(150,150,150)',
                                             trailColor: '#ddd',
                                             backgroundColor: '#3e98c7',
                                         })}
@@ -496,7 +497,7 @@ export default function PromotionProgress() {
                                                 </div>
                                             </div>
                                             <div className='promotionalSkills'>
-                                                <div className='cardHeadings' style={{ color: '#f0f0f0 ' }}>Skills Required</div>
+                                                <div className='cardHeadings' style={{ color: '#969696 ' }}>Skills Required</div>
 
                                                 <div className="skillsContainer">
                                                     {

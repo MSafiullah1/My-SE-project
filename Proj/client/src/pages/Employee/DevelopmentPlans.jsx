@@ -33,6 +33,7 @@ export default function Feedback() {
     };
 
     useEffect(() => {
+        document.title = 'Development Plans'
         dispatch({type: 'LOGIN', payload: user, no: 1, path: location.pathname})
         localStorage.setItem('path' ,JSON.stringify(location.pathname))
     }, [])

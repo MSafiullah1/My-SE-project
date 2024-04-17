@@ -15,14 +15,14 @@ import { useUserContext } from '../../hooks/useUserContext';
 export default function AssessComplaint() {
     const location = useLocation();
     const { logout } = useLogout()
-    
+
     const user = JSON.parse(localStorage.getItem('user'));
-    const { authenticatedUser, no, path, dispatch} = useUserContext()
+    const { authenticatedUser, no, path, dispatch } = useUserContext()
     const navigate = useNavigate();
 
 
     const menuItems = [
-        { name: "Employee Development", icon: faHouse, margin: 0, path: "/dashboard" },
+        { name: "Dashboard", icon: faHouse, margin: 5, path: "/dashboard" },
         { name: "Assess Feedback", icon: faFileArrowDown, margin: 12, path: '/admin_feedback' },
         { name: "Create Assessment", icon: faFileArrowUp, margin: 10, path: "/admin_feedback/create_assessment" },
         { name: "Employee Data", icon: faStreetView, margin: 3, path: "/employee_data" },
@@ -35,20 +35,20 @@ export default function AssessComplaint() {
     const [employees, setEmployees] = useState([
         // { id: 1, role: "Manager", age: 30, contact: "123-456-7890", hoursWorked: 40, status: "Active" }
     ]);
-    const [empdata,setEmpdata] = useState([]);
+    const [empdata, setEmpdata] = useState([]);
 
-    const[specificE,setSpecificE] = useState({})
+    const [specificE, setSpecificE] = useState({})
 
     const [complaintData, setComplaintData] = useState([]);
 
 
     // Fetching all employees from the database
     useEffect(() => {
-        dispatch({type: 'LOGIN', payload: user, no: 2, path: location.pathname})
-        localStorage.setItem('path' ,JSON.stringify(location.pathname))
+        dispatch({ type: 'LOGIN', payload: user, no: 2, path: location.pathname })
+        localStorage.setItem('path', JSON.stringify(location.pathname))
         document.title = 'Assess Feedback - Complaint'
         let isMounted = true; // Flag to check if the component is still mounted
-    
+
         // // Helper function to combine and update employee data
         // const updateEmployeesWithData = (employees, empData) => {
         //     // Combine employee and additional data
@@ -69,45 +69,44 @@ export default function AssessComplaint() {
         //         }
         //         return employee;
         //     });
-    
+
         //     // Update state if component is still mounted
         //     if (isMounted) {
         //         setEmployees(updatedEmployees);
         //     }
         // };
-    
+
         // Perform both Axios requests in parallel
         Promise.all([
             axios.post('/getComplaint'),
             axios.get('/dashboard-employees')
         ])
-        .then(([complaintRes, empDataRes]) => {
-            if (!isMounted) return; // Prevent updating state if the component is unmounted
-            const complaintData = complaintRes.data;
-            const empData = empDataRes.data;
-            if(complaintData){
-              console.log(complaintData)
-              setComplaintData(complaintData);
-            }
-            else
-            {
-              console.log("null")
-            }
-    
-            // Update employees with combined data
-            // updateEmployeesWithData(complaintData, empData);
-        })
-        .catch(err => {
-            console.error(err); // Log any errors to the console
-            toast.error('Failed to fetch data'); // Display a toast message on failure
-        });
-    
+            .then(([complaintRes, empDataRes]) => {
+                if (!isMounted) return; // Prevent updating state if the component is unmounted
+                const complaintData = complaintRes.data;
+                const empData = empDataRes.data;
+                if (complaintData) {
+                    console.log(complaintData)
+                    setComplaintData(complaintData);
+                }
+                else {
+                    console.log("null")
+                }
+
+                // Update employees with combined data
+                // updateEmployeesWithData(complaintData, empData);
+            })
+            .catch(err => {
+                console.error(err); // Log any errors to the console
+                toast.error('Failed to fetch data'); // Display a toast message on failure
+            });
+
         // Cleanup function to set isMounted to false when the component unmounts
         return () => {
             isMounted = false;
         };
     }, []); // Empty dependency array means this effect runs only once after the initial render
-    
+
 
 
 
@@ -160,7 +159,7 @@ export default function AssessComplaint() {
 
     const handleMenuItemClick = (path, e) => {
         e.preventDefault()
-        navigate(path, { state: {userInfo: user}}); 
+        navigate(path, { state: { userInfo: user } });
     };
 
 
@@ -212,28 +211,28 @@ export default function AssessComplaint() {
     };
 
     const deleteComplaint = async (id) => {
-      try {
-          // console.log('Deleting complaint:', id);
-          const response = await axios.post(`/deleteComplaint/${id}`);
-          console.log('complaint deleted:', response.data);
+        try {
+            // console.log('Deleting complaint:', id);
+            const response = await axios.post(`/deleteComplaint/${id}`);
+            console.log('complaint deleted:', response.data);
 
-          axios.post('/getComplaint')
-              .then(res => {
-                  // console.log(res.data);
-                  setComplaintData(res.data);
+            axios.post('/getComplaint')
+                .then(res => {
+                    // console.log(res.data);
+                    setComplaintData(res.data);
 
-                  toast.success('complaint deleted successfully');
-              })
-              .catch(err => {
-                  console.log(err);
-                  toast.error('Failed to fetch complaints');
-              });
+                    toast.success('complaint deleted successfully');
+                })
+                .catch(err => {
+                    console.log(err);
+                    toast.error('Failed to fetch complaints');
+                });
 
-      } catch (error) {
-          console.error('Failed to delete complaint:', error);
-          // Handle error
-      }
-  }
+        } catch (error) {
+            console.error('Failed to delete complaint:', error);
+            // Handle error
+        }
+    }
 
     return (
         <div className='overlay'>
@@ -249,15 +248,17 @@ export default function AssessComplaint() {
                     </div>
                     <div className="menu">
                         {menuItems.map(item => (
-                                <div key={item.name} className={isActive(item.path) ? "active" : ""}>
-                                    <FontAwesomeIcon icon={item.icon} className={isActive(item.path) ? "icon active" : "icon"} size="2x" color='rgb(196,196,202)' style={{ marginLeft: item.margin }} />
-                                    <a href="" onClick={(e) => handleMenuItemClick(item.path, e)}>{item.name}</a>
-                                </div>
+                            <div key={item.name} className={isActive(item.path) ? "active" : ""}>
+                                <FontAwesomeIcon icon={item.icon} className={isActive(item.path) ? "icon active" : "icon"} size="2x" color='rgb(196,196,202)' style={{ marginLeft: item.margin }} />
+                                <a href="" onClick={(e) => handleMenuItemClick(item.path, e)}>{item.name}</a>
+                            </div>
                         ))}
                     </div>
                 </div>
                 <div className='contentAdminDash'>
                     <div className='header'>
+                        <a href="" onClick={(e) => handleMenuItemClick('/about', e)}>About</a>
+                        <span>|</span>
                         <FontAwesomeIcon icon={faUser} size='xl' color='rgb(196,196,202)' />
                         <a href="" onClick={(e) => handleMenuItemClick('/AdminProfile', e)}>{user.name}</a>
                         <button
@@ -276,32 +277,33 @@ export default function AssessComplaint() {
 
                     </div>
 
-                        <div className='feedbackHeader'> 
+                    <div className='feedbackHeader'>
                         {/* <h1>Feedbacks</h1> */}
                         <div className="form-heading">
                             <FontAwesomeIcon
                                 icon={faFileLines}
                                 size="2x"
                                 color="rgb(34, 137, 255)"
-                            />
-                            <h1>Complaint Forms</h1>
-                            </div>
-                            <div className='employeeFunctionss'>
-                                <div className='func'>Total Complaints</div>
-                                <div className='countAndView'>
-                                    <div className='funcCount'>{complaintData.length}</div>
-                                    <div className='iconAndView'>
-                                        <FontAwesomeIcon icon={faEye} size='3x' color='rgb(255,157,71)' />
-                                        <a href="">View</a>
-                                    </div>
-                                </div>
+                                style={{ marginBottom: 10, marginLeft: 20 }} />
+                            <h1 style={{ marginLeft: 40, marginRight: 60 }}>Complaints</h1>
+                        </div>
+                        <div className='employeeFunctionss'>
+                            <div className='func'>Total Complaints</div>
+                            <div className='countAndView'>
+                                <div className='funcCount'>{complaintData.length}</div>
+                                {/* <div className='iconAndView'>
+                                    <FontAwesomeIcon icon={faEye} size='3x' color='rgb(255,157,71)' />
+                                    <a href="">View</a>
+                                </div> */}
                             </div>
                         </div>
-                    <div className='employeeSection' style={{marginTop:50}}>
+                    </div>
+                    <div className='employeeSection' style={{ marginTop: 50 }}>
                         <div className='employeeData'>
                             <table>
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Complaint ID</th>
                                         <th>Complaint by Employee</th>
                                         <th>Against Employee ID</th>
@@ -314,48 +316,49 @@ export default function AssessComplaint() {
                                 <tbody>
                                     {complaintData.map(complaint => (
                                         <tr key={complaint.complaintID}>
+                                             <td>{complaintData.indexOf(complaint) + 1}</td>
                                             <td>{complaint.complaintID}</td>
                                             <td>{complaint.employeeID2}</td>
                                             <td>{complaint.employeeID1}</td>
-                                            <td>{complaint.courseID}</td>                         
-                                            <td>{complaint.date}</td>
+                                            <td>{complaint.courseID}</td>
+                                            <td>{new Date(complaint.date).toLocaleDateString()}</td>
                                             <td>
                                                 <button onClick={() => addEmployee(complaint)}>
-                                                  <FontAwesomeIcon icon={faEye} size='xl' />
+                                                    <FontAwesomeIcon icon={faEye} size='xl' />
                                                 </button>
                                             </td>
                                             <td>
-                                                    <button onClick={() => deleteComplaint(complaint.complaintID)}>
-                                                        <FontAwesomeIcon icon={faTrash} size='xl' />
-                                                    </button>
+                                                <button onClick={() => deleteComplaint(complaint.complaintID)}>
+                                                    <FontAwesomeIcon icon={faTrash} size='xl' />
+                                                </button>
                                             </td>
                                         </tr>
                                     ))
                                     }
-                                </tbody> 
+                                </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-            {showModal && 
+            {showModal &&
                 (
                     <div className="modalOverlay">
                         <div className="modalContent">
-                        <span className="closeModal" onClick={closeModal}>&times;</span> {/* Close button */}
+                            <span className="closeModal" onClick={closeModal}>&times;</span> {/* Close button */}
                             <div className="modalHeader">
                                 {/* <span className="closeModal" onClick={closeModal}>&times;</span> */}
                                 <h2>Complaint</h2>
                             </div>
                             <div className="modalBody">
-                                    <div className="formGroup1">
-                                        <label htmlFor="CourseID">Against Employee/Course ID:</label>
-                                        <h3>{specificE.employeeID1 =="-"? specificE.courseID : specificE.employeeID1}</h3>
-                                    </div>
-                                    <div className="formGroup1">
-                                        <label htmlFor="Response">What the complaint was?</label>
-                                        <h3>{specificE.feedback}</h3>
-                                    </div>
+                                <div className="formGroup1">
+                                    <label htmlFor="CourseID">Against Employee/Course ID:</label>
+                                    <h3>{specificE.employeeID1 == "-" ? specificE.courseID : specificE.employeeID1}</h3>
+                                </div>
+                                <div className="formGroup1">
+                                    <label htmlFor="Response">What the complaint was?</label>
+                                    <h3>{specificE.feedback}</h3>
+                                </div>
                             </div>
                         </div>
                     </div>

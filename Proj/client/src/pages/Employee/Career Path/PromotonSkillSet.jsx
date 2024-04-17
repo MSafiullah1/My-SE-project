@@ -73,6 +73,7 @@ export default function AvailablePositions() {
     }
 
     useEffect(() => {
+        document.title = 'Career Path - Skill Sets'
         dispatch({type: 'LOGIN', payload: user, no: 1, path: location.pathname})
         localStorage.setItem('path' ,JSON.stringify(location.pathname))
         getPositionData()

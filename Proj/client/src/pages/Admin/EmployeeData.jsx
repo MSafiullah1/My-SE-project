@@ -23,7 +23,7 @@ export default function EmployeeData() {
     const { authenticatedUser, no, path, dispatch} = useUserContext()
 
     const menuItems = [
-        { name: "Employee Development", icon: faHouse, margin: 0, path: "/dashboard" },
+        { name: "Dashboard", icon: faHouse, margin: 5, path: "/dashboard" },
         { name: "Assess Feedback", icon: faFileArrowDown, margin: 12, path:'/admin_feedback' },
         { name: "Create Assessment", icon: faFileArrowUp, margin: 10, path: "/admin_feedback/create_assessment" },
         { name: "Employee Data", icon: faStreetView, margin: 3, path: "/employee_data" },

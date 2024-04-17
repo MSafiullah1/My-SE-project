@@ -70,6 +70,7 @@ export default function PendingAssessment() {
 	const [pendingCount, setPendingCount] = useState([]);
 	// Fetching all employees from the database
 	useEffect(() => {
+		document.title = 'Pending Assessments'
 		dispatch({ type: 'LOGIN', payload: user, no: 1, path: location.pathname })
 		localStorage.setItem('path', JSON.stringify(location.pathname))
 		let isMounted = true; // Flag to check if the component is still mounted

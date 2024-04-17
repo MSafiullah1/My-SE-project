@@ -263,6 +263,20 @@ button[type='submit']:hover {
     margin-right: 10px; /* Add some space between the input and the button */
 }
 
+.search-btn2 {
+    /* Remove position absolute and other positioning styles, flexbox will handle it */
+    /* background: #0073b1; */
+    color: #eaecef ;
+    font-size:40px;
+    background-color: #4480bf;
+    padding: 5px;
+
+    border-radius: 10px;
+    cursor: pointer;
+    /* Add some box-shadow for better UX */
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.15);
+}
+
 .search-btn {
     /* Remove position absolute and other positioning styles, flexbox will handle it */
     border: none;
@@ -271,6 +285,7 @@ button[type='submit']:hover {
     padding: 10px 15px; /* Adjust padding as needed */
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 5px;
     /* Add some box-shadow for better UX */
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.15);
 }

@@ -67,6 +67,7 @@ export default function FeedbackForm() {
 // })
 
       useEffect(() => {
+        document.title = 'Feedback Form'
         dispatch({type: 'LOGIN', payload: user, no: 1, path: location.pathname})
         localStorage.setItem('path' ,JSON.stringify(location.pathname))
         fetchData(); // Call the fetch function on component mount
@@ -146,6 +147,7 @@ export default function FeedbackForm() {
         console.log("Feedback submitted successfully")
         console.log(response);
         setData({});
+        setData({courseID: '', feedback: '', empID: 'E'+allUserInfo.employeeID, rating: 0});
         toast.success("Feedback submitted successfully");
       }
     } catch (error) {

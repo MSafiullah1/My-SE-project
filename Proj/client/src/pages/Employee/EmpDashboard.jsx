@@ -35,6 +35,7 @@ export default function EmployeeDashboard() {
     };
 
     useEffect(() => {
+        document.title = 'Dashboard'
         dispatch({type: 'LOGIN', payload: user, no: 1, path: location.pathname})
         localStorage.setItem('path' ,JSON.stringify(location.pathname))
     }, [])

@@ -23,6 +23,9 @@ import { useLogout } from '../../hooks/useLogout';
 import { useUserContext } from '../../hooks/useUserContext';
 
 export default function EmployeeSettings() {
+
+    const [activeTab, setActiveTab] = useState(0);
+
     const location = useLocation();
     const user = JSON.parse(localStorage.getItem('user'));
     const { logout } = useLogout()
@@ -37,12 +40,16 @@ export default function EmployeeSettings() {
 
     useEffect(() => {
         // fetchData(); // Call the fetch function on component mount
+        document.title = 'Settings'
         dispatch({type: 'LOGIN', payload: user, no: 1, path: location.pathname})
         localStorage.setItem('path' ,JSON.stringify(location.pathname))
         getPositionData()
         setActiveUser({...activeUser, userPosition: getPositionTitle(user.positionID)})
-        setRandomizedImages(sequenceImg([...imgSources]));
     }, [positions]); // Empty array means it will only run once when component mounts
+
+    useEffect(() => {
+        setRandomizedImages(sequenceImg([...imgSources]));
+    }, [activeTab])
 
     const menuItems = [
         { name: "Career Path", icon: faHouse, margin: 0, path: "/employeeDashboard" },
@@ -64,7 +71,6 @@ export default function EmployeeSettings() {
         console.log('Hello')
     }
 
-    const [activeTab, setActiveTab] = useState(0);
     const [newPassword, setNewPassword] = useState({
         currentPassword: '',
         newPassword: '',

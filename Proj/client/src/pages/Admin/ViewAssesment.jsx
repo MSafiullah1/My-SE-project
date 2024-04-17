@@ -31,15 +31,15 @@ export default function viewAssessment() {
 	const { logout } = useLogout()
 	const navigate = useNavigate();
 
-	const { authenticatedUser, no, path, dispatch} = useUserContext()
+	const { authenticatedUser, no, path, dispatch } = useUserContext()
 
 	const menuItems = [
-        { name: "Employee Development", icon: faHouse, margin: 0, path: "/dashboard" },
-        { name: "Assess Feedback", icon: faFileArrowDown, margin: 12, path: '/admin_feedback' },
-        { name: "Create Assessment", icon: faFileArrowUp, margin: 10, path: "/admin_feedback/create_assessment" },
-        { name: "Employee Data", icon: faStreetView, margin: 3, path: "/employee_data" },
-        { name: "Model Tuning", icon: faChartLine, margin: 5, path: "/model_tuning" },
-        { name: "Settings", icon: faGear, margin: 5, path: "/admin_settings" },
+		{ name: "Dashboard", icon: faHouse, margin: 5, path: "/dashboard" },
+		{ name: "Assess Feedback", icon: faFileArrowDown, margin: 12, path: '/admin_feedback' },
+		{ name: "Create Assessment", icon: faFileArrowUp, margin: 10, path: "/admin_feedback/create_assessment" },
+		{ name: "Employee Data", icon: faStreetView, margin: 3, path: "/employee_data" },
+		{ name: "Model Tuning", icon: faChartLine, margin: 5, path: "/model_tuning" },
+		{ name: "Settings", icon: faGear, margin: 5, path: "/admin_settings" },
 	];
 
 	const [activeMenuItem, setActiveMenuItem] = useState("");
@@ -58,8 +58,8 @@ export default function viewAssessment() {
 	// Fetching all employees from the database
 	useEffect(() => {
 		let isMounted = true; // Flag to check if the component is still mounted
-        dispatch({type: 'LOGIN', payload: user, no: 2, path: location.pathname})
-        localStorage.setItem('path' ,JSON.stringify(location.pathname))
+		dispatch({ type: 'LOGIN', payload: user, no: 2, path: location.pathname })
+		localStorage.setItem('path', JSON.stringify(location.pathname))
 		document.title = 'Assess Feedback - Assesments'
 		Promise.all([axios.post("/getAssessmentData")])
 			.then(([assessmentRes]) => {
@@ -240,6 +240,8 @@ export default function viewAssessment() {
 				</div>
 				<div className="contentAdminDash">
 					<div className="header">
+						<a href="" onClick={(e) => handleMenuItemClick('/about', e)}>About</a>
+						<span>|</span>
 						<FontAwesomeIcon icon={faUser} size="xl" color="rgb(196,196,202)" />
 						<a href="" onClick={(e) => handleMenuItemClick("/UserProfile", e)}>
 							{user.name}
@@ -266,8 +268,8 @@ export default function viewAssessment() {
 								icon={faFileLines}
 								size="2x"
 								color="rgb(34, 137, 255)"
-							/>
-							<h1>Assessments</h1>
+								style={{ marginBottom: 10, marginLeft: 20 }} />
+                            <h1 style={{ marginLeft: 40, marginRight: 60 }}>Assesments</h1>
 						</div>
 						<div className="employeeFunctionss">
 							<div className="func">Total Assessments</div>
@@ -298,7 +300,7 @@ export default function viewAssessment() {
 										<tr key={assessment.assignmentID}>
 											<td>{assessment.assignmentID}</td>
 											<td>{assessment.employeeID}</td>
-											<td>{assessment.date}</td>
+											<td>{new Date(assessment.date).toLocaleDateString()}</td>
 											<td>
 												<button onClick={() => addEmployee(assessment)}>
 													<FontAwesomeIcon icon={faEye} size="xl" />
