@@ -44,7 +44,8 @@ const {
     getWorkshops,
     updateAdminPic,
     changeAdminPasssword,
-    changeAdminSecurityImg
+    changeAdminSecurityImg,
+    updatePosition
 } = require("../controllers/dashboardAdmin");
 
 const { viewFeedbacks, viewComplaints, viewAssignments } = require("../controllers/feedbackControllers"); 
@@ -110,6 +111,6 @@ router.get("/mentorOptions/:positionID/:employeeID", getMentorOptions);
 
 // axios.post(`/saveMentor/${mentorID}/${allUserInfo.employeeID}`)
 router.post("/saveMentor/:mentorID/:employeeID", assignMentor);
-
+router.post('/updatePosition', updatePosition);
 
 module.exports = router;

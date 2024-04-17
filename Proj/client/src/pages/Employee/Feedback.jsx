@@ -25,7 +25,7 @@ export default function Feedback() {
 
     const handleMenuItemClick = (path, e) => {
         e.preventDefault()
-        navigate(path, { state: { userInfo:user } });
+        navigate(path, { state: { userInfo: user } });
     };
 
     useEffect(() => {

@@ -38,27 +38,27 @@ function App() {
                 <Route path='/signup' element={<Signup />} />
                 <Route path='/login' element={<Login />} />
 
-                <Route path='/dashboard' element={<Dashboard />} />
-                <Route path='/assess_feedback' element={<AssessFeedback />} />
-                <Route path='/create_assessment' element={<CreateAssessment />} />
-                <Route path='/employee_data' element={<EmployeeData />} />
-                {/* <Route path='/admin_settings' element={<AdminSettings /> } /> */}
-                <Route path='/model_tuning' element={<ModelTuning />} />
-                <Route path='/about' element={<AboutEmployee />} />
+      <Route path='/dashboard' element={<Dashboard /> } />
+      <Route path='/assess_feedback' element={<AssessFeedback /> } />
+      <Route path='/create_assessment' element={<CreateAssessment /> } />
+      <Route path='/employee_data' element={<EmployeeData /> } />
+      {/* <Route path='/admin_settings' element={<AdminSettings /> } /> */}
+      <Route path='/model_tuning' element={<ModelTuning /> } />
+      <Route path='/about' element={<AboutEmployee/> } />
 
 
                 <Route path='/resetPassword' element={<ResetPwd />} />
                 <Route path='/resetPasswordFinalStep' element={<ResetFinalPwd />} />
                 <Route path='/resetSecurityImage' element={<ForgetSecurityImage />} />
 
-                <Route path='/employeeDashboard' element={<EmployeeDashboard />} />
-                <Route path='/feedback' element={<Feedback />} />
-                <Route path='/feedbackForm' element={<FeedbackForm />} />
-                <Route path='/employeeSettings' element={<EmployeeSettings />} />
-                <Route path='/userProfile' element={<UserProfile />} />
-                <Route path='/developmentPlans' element={<DevelopmentPlans />} />
-                <Route path='/aboutAdmin' element={<AboutAdmin />} />
-                <Route path='/viewProfile' element={<ViewProfile />} />
+      <Route path='/employeeDashboard' element={<EmployeeDashboard /> } />
+      <Route path='/feedback' element={<Feedback/>} />
+      <Route path='/feedbackForm' element={<FeedbackForm/>} />
+      <Route path='/employeeSettings' element={<EmployeeSettings/>} />
+      <Route path='/userProfile' element={<UserProfile/>} />
+      <Route path='/developmentPlans' element={<DevelopmentPlans/>} />
+      <Route path='/aboutAdmin' element={<AboutAdmin/>} />
+      <Route path='/viewProfile' element={<ViewProfile/>} />
 
 
             </Routes>

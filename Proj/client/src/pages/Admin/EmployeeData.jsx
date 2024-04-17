@@ -23,7 +23,7 @@ export default function EmployeeData() {
     const { authenticatedUser, no, path, dispatch} = useUserContext()
 
     const menuItems = [
-        { name: "Dashboard", icon: faHouse, margin: 0, path: "/dashboard" },
+        { name: "Employee Development", icon: faHouse, margin: 0, path: "/dashboard" },
         { name: "Assess Feedback", icon: faFileArrowDown, margin: 12, path:'/admin_feedback' },
         { name: "Create Assessment", icon: faFileArrowUp, margin: 10, path: "/admin_feedback/create_assessment" },
         { name: "Employee Data", icon: faStreetView, margin: 3, path: "/employee_data" },
@@ -35,6 +35,7 @@ export default function EmployeeData() {
     const [showModal, setShowModal] = useState(false);
     const [showEditModel, setShowEditModal] = useState(false);
     const [userData, setUserData] = useState(null);
+    const [positions, setPositions] = useState([]);
 
     const isActive = (path) => {
         return location.pathname === path; // Check if the current location matches the path
@@ -79,10 +80,15 @@ export default function EmployeeData() {
     }
 
     useEffect(() => {
+        fetchEmployees()
+    },[employees])
+
+    useEffect(() => {
         dispatch({type: 'LOGIN', payload: user, no: 2, path: location.pathname})
         localStorage.setItem('path' ,JSON.stringify(location.pathname))
-        fetchEmployees()
-    })
+        document.title = 'Employee Data'
+        getPositionData()
+    },[])
 
     const handleViewProfile = (e, val) => {
         console.log('hello')
@@ -98,6 +104,48 @@ export default function EmployeeData() {
         setShowEditModal(true);
         // setShowModal(true);
         setUserData(val);
+    }
+
+    const getPositionTitle = (positionID) => {
+        const position = positions.find(position => position.positionID === positionID);
+        // console.log(position, positionID)
+        // console.log('hello', positionID)
+        return position ? position.title : "Unknown";
+    };
+
+    const getPositionData = async () => {
+        try {
+            const resp = await axios.get('/getPositionsData')
+            setPositions(resp.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const positionUpdate = async (e, employee) => {
+        try {
+            console.log(e.target.value)
+            const resp = await axios.post('/updatePosition', {
+                employeeID: employee.employeeID,
+                new_position: e.target.value
+            })
+            if (resp.data.error) {
+                toast.error(resp.data.error)
+            } else {
+                toast.success(employee.name + "'s successfully updated")
+                let update = []
+                employees.map((v) => {
+                    if (v.employeeID === employee.employeeID) {
+                        update.push({...v, positionID: e.target.value})
+                    } else {
+                        update.push(v)
+                    }
+                })
+                setEmployees(update)
+            }
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     return (
@@ -147,6 +195,7 @@ export default function EmployeeData() {
                                 <tr>
                                     <th>Employee ID</th>
                                     <th>Name</th>
+                                    <th>Position</th>
                                     <th>Age</th>
                                     <th>Contact</th>
                                     <th>Email</th>
@@ -161,11 +210,20 @@ export default function EmployeeData() {
                                         <tr key={ind}>
                                             <td>{val.employeeID}</td>
                                             <td>{val.name}</td>
+                                            <td>
+                                                <select name="status" className="status-dropdown" value={val.positionID} onChange={(e) => positionUpdate(e, val)}>
+                                                    {positions && positions.map((v) => {
+                                                        return (
+                                                            <option value={v.positionID}>{v.title}</option>
+                                                        )
+                                                    })}
+                                                </select>
+                                            </td>
                                             <td>{getAge(val.date_of_birth)}</td>
                                             <td>{val.contactNumber}</td>
                                             <td>{val.email}</td>
                                             <td>
-                                                <select name="status" class="status-dropdown" value={!val.is_blocked ? 'active' : 'inactive'} onChange={(e) => statusUpdate(e, val)}>
+                                                <select name="status" className="status-dropdown" value={!val.is_blocked ? 'active' : 'inactive'} onChange={(e) => statusUpdate(e, val)}>
                                                     <option value="active">Active</option>
                                                     <option value="inactive">Blocked</option>
                                                 </select>

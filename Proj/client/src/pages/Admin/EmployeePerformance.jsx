@@ -21,7 +21,7 @@ export default function EmployeePerformance() {
     const { authenticatedUser, no, path, dispatch} = useUserContext()
 
     const menuItems = [
-        { name: "Dashboard", icon: faHouse, margin: 0, path: "/dashboard" },
+        { name: "Employee Development", icon: faHouse, margin: 0, path: "/dashboard" },
         { name: "Assess Feedback", icon: faFileArrowDown, margin: 12, path: '/admin_feedback' },
         { name: "Create Assessment", icon: faFileArrowUp, margin: 10, path: "/admin_feedback/create_assessment" },
         { name: "Employee Data", icon: faStreetView, margin: 3, path: "/employee_data" },
@@ -44,7 +44,7 @@ export default function EmployeePerformance() {
     const [showModal, setShowModal] = useState(false);
 
     const isActive = (path) => {
-        return location.pathname === path; // Check if the current location matches the path
+        return '/dashboard' === path; // Check if the current location matches the path
     };
 
 
@@ -135,6 +135,7 @@ export default function EmployeePerformance() {
 
 
     useEffect(() => {
+        document.title = 'Dashboard - View Perfomance'
         axios.get('/dashboard-position-titles')
             .then(res => {
                 setPositionTitles(res.data);

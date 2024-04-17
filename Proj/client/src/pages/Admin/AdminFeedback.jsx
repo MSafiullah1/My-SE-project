@@ -1,23 +1,29 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom'
 import { UserContext } from '../../../context/userContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faFileArrowDown, faFileArrowUp, faStreetView, faGear, faBuilding, faUser, faFileLines, faTriangleExclamation, faEye, faTrash, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faFileArrowDown, faFileArrowUp, faStreetView, faGear, faBuilding, faUser, faFileLines, faTriangleExclamation, faEye, faTrash, faSearch, faChartLine } from '@fortawesome/free-solid-svg-icons';
 import './AdminFeedback.css';
 import './fonts.css';
+import { useUserContext } from '../../hooks/useUserContext';
+import { useLogout } from '../../hooks/useLogout';
 
 export default function AdminFeedback() {
     const location = useLocation();
-    const user = location.state.name;
+    const { logout } = useLogout()
+    
+    const { authenticatedUser, no, path, dispatch} = useUserContext()
     const navigate = useNavigate();
-    const allUserInfo = location.state.userInfo;
+    const allUserInfo = JSON.parse(localStorage.getItem('user'));
+    const user = allUserInfo.name
 
     const menuItems = [
-        { name: "Dashboard", icon: faHouse, margin: 0, path: "/dashboard" },
+        { name: "Employee Development", icon: faHouse, margin: 0, path: "/dashboard" },
         { name: "Assess Feedback", icon: faFileArrowDown, margin: 12, path: "/admin_feedback" },
         { name: "Create Assessment", icon: faFileArrowUp, margin: 10, path: "/admin_feedback/create_assessment" },
         { name: "Employee Data", icon: faStreetView, margin: 3, path: "/employee_data" },
-        { name: "Settings", icon: faGear, margin: 5, path: "/admin_settings" }
+        { name: "Model Tuning", icon: faChartLine, margin: 5, path: "/model_tuning" },
+        { name: "Settings", icon: faGear, margin: 5, path: "/admin_settings" },
     ];
 
     const [activeMenuItem, setActiveMenuItem] = useState("");
@@ -30,6 +36,12 @@ export default function AdminFeedback() {
     const isActive = (path) => {
         return location.pathname === path; // Check if the current location matches the path
     };
+
+    useEffect(() => {
+        document.title = 'Assess Feedback'
+        dispatch({type: 'LOGIN', payload: user, no: 2, path: location.pathname})
+        localStorage.setItem('path' ,JSON.stringify(location.pathname))
+    },[])
 
     return (
         <div className='overlay'>
@@ -57,7 +69,7 @@ export default function AdminFeedback() {
                         <FontAwesomeIcon icon={faUser} size='xl' color='rgb(196,196,202)' />
                         <a href="" onClick={(e) => handleMenuItemClick('/AdminProfile', e)}>{user}</a>
                         <button
-                            onClick={(e) => handleMenuItemClick('/login', e)}
+                            onClick={() => logout()}
                             style={{
                                 padding: '8px 16px',
                                 backgroundColor: '#f44336',
@@ -77,8 +89,8 @@ export default function AdminFeedback() {
                         <div className='promotionItem' id='complaintForm' onClick={(e) => handleMenuItemClick('/admin_feedback/assess_complaint', e)}>
                             <div >View Complaints.</div>
                         </div>
-                        <div className='promotionItem' id='pendingAssessments' onClick={(e) => handleMenuItemClick('/admin_feedback/create_assessment', e)}>
-                            <div>Create Assessments.</div>
+                        <div className='promotionItem' id='pendingAssessments' onClick={(e) => handleMenuItemClick('/admin_feedback/view_assessment', e)}>
+                            <div>View Assessments.</div>
                         </div>
                     </div>
                 </div>

@@ -791,10 +791,10 @@ const assignAssessment = async (reqs, resp) => {
 }
 
 const updateAssessment = async (reqs,resp) => {
-    const { assessmentID, score, status } = reqs.body;
+    const { assessmentID, employee_answers, score, status } = reqs.body;
 
     // Input validation (if necessary)
-    if (!assessmentID || !score || !status) {
+    if (!assessmentID || !score || !status || !employee_answers) {
         return resp.status(400).json({ message: 'Assessment ID, score, and status are required.' });
     }
 
@@ -803,6 +803,7 @@ const updateAssessment = async (reqs,resp) => {
         const updatedAssessment = await doAssignmentModel.findOneAndUpdate(
             { assignmentID: assessmentID },
             { 
+                employee_answers: employee_answers,
                 score: score,
                 status: status
             },
@@ -822,8 +823,6 @@ const updateAssessment = async (reqs,resp) => {
     }
 }
 
-
-// router.get("/mentor/:mentor", getMentorInfo);   
 const getMentorInfo = async (reqs, resp) => {
     try {
         const { mentor } = reqs.params
@@ -919,6 +918,8 @@ const assignMentor = async (reqs, resp) => {
         console.log(error)
     }
 }
+
+
 
 
 

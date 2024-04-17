@@ -531,7 +531,8 @@ async function init_db(conn) {
                 "workshops_taken": ["Python for Data Analysis Workshop"],
                 "awards": [],
                 "profile_picture": "",
-                "registered_status": true
+                "registered_status": true,
+                "failed_attempts": 0
             },
             {
                 "employeeID": "1019",
@@ -1348,6 +1349,7 @@ async function init_db(conn) {
             'Common user issue?' 
             ],
             answers: ['Windows', 'TeamViewer', 'VPN', 'Password'],
+            employee_answers: [],
             score: '0',
             status: 'Pending',
             date: new Date('2024-03-05T08:00:00Z')

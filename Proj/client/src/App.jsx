@@ -36,6 +36,7 @@ import ModelTuning from './pages/Admin/ModelTuning';
 import { useUserContext } from './hooks/useUserContext';
 import AdminFeedback from './pages/Admin/AdminFeedback';
 import AssessComplaint from './pages/Admin/AssessComplaint';
+import ViewAssessment from './pages/Admin/ViewAssesment';
 
 
 axios.defaults.baseURL = 'http://localhost:8000/';
@@ -67,6 +68,7 @@ function App() {
                         <Route path='/admin_feedback/assess_feedback' element={<AssessFeedback />} />
                         <Route path='/admin_feedback/assess_complaint' element={<AssessComplaint />} />
                         <Route path='/admin_feedback/create_assessment' element={<CreateAssessment />} />
+                        <Route path='/admin_feedback/view_assessment' element={<ViewAssessment />} />
                         <Route path='/assess_feedback' element={<AssessFeedback />} />
                         <Route path='/model_tuning' element={<ModelTuning />} />
                         <Route path='/employee_data' element={<EmployeeData />} />

@@ -245,36 +245,25 @@ export default function Courses() {
                             <h2>Recommended Workshops 📝</h2>
                             <ul className="recommendedCourses">
                             
-                            {rem_Workshops_for_position.length > 0 ? (
-                            rem_Workshops_for_position.map((course, index) => (
+                            {rem_all_workshops_offered.map((course, index) => (
                                 <li key={index}>
                                 <h4>Workshop Name: {course}</h4>
                                 <div>Workshop ID: {getWorkshopId(course)}</div>
                                 <div>Workshop details: {getWorkshopDetails(getWorkshopId(course))}</div>
                                 
                               </li>
-                            ))): (
-                                <li>
-                                <div>You have completed all the workshops for your position.</div>
-                                </li>
-                              )}
-                            
+                            ))}
                             </ul>
                             <h2>Completed Workshops ✅</h2>
                             <ul className="completedCourses">  
-                            {completedWorkshops_for_position.length > 0 ? (
-                            completedWorkshops_for_position.map((course, index) => (
+                            {completedWorkshops_for_position.map((course, index) => (
                                 <li key={index}>
                                 <h4>Workshop Name: {course}</h4>
                                 <div>Workshop ID: {getWorkshopId(course)}</div>
                                 <div>Workshop details: {getWorkshopDetails(getWorkshopId(course))}</div>
 
                             </li>
-                             ))): (
-                                <li>
-                                <div>You have not completed any workshops.</div>
-                                </li>
-                              )}
+                            ))}
                             </ul>
                         </div>
                         </div>

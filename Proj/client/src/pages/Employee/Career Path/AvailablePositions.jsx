@@ -108,22 +108,6 @@ export default function AvailablePositions() {
 
     }, [employees]);
 
-    const availablePositionsSet =()=> {
-                let currEmployee = getCurrentEmployee(allUserInfo.name)
-                console.log("here: ", currEmployee)
-
-                let currHierarchy = getPositionHierarchy(currEmployee.positionID)
-                let new_positions = positions.filter(position => position.hierarchy_level === (currHierarchy -1))
-     
-                if(new_positions.length==0)
-                {
-                    setNoPosition(true)
-                }
-                setAvailablePositions(new_positions)
-                setTitle(getPositionTitle(currEmployee.positionID))
-
-    }
-
     const handleMenuItemClick = (path, e) => {
         e.preventDefault();
         navigate(path, { state: { userInfo:allUserInfo } });

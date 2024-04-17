@@ -15,44 +15,31 @@ import {
 	faTrash,
 	faSearch,
 	faStar,
+	faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
-// import './Dashboard.css';
-import "./PendingAssessments.css";
+import "./ViewAssesment.css";
 import "./fonts.css";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { useLogout } from "../../hooks/useLogout";
 import { useUserContext } from "../../hooks/useUserContext";
+import { useLogout } from "../../hooks/useLogout";
 
-export default function PendingAssessment() {
+export default function viewAssessment() {
 	const location = useLocation();
-	const navigate = useNavigate();
-	const allUserInfo = JSON.parse(localStorage.getItem('user'));
+	const user = JSON.parse(localStorage.getItem('user'));
 	const { logout } = useLogout()
-	const { authenticatedUser, no, path, dispatch } = useUserContext()
-	const user = allUserInfo.name;
+	const navigate = useNavigate();
+
+	const { authenticatedUser, no, path, dispatch} = useUserContext()
 
 	const menuItems = [
-		{
-			name: "Career Path",
-			icon: faHouse,
-			margin: 0,
-			path: "/employeeDashboard",
-		},
-		{
-			name: "Personal Development Plans",
-			icon: faFileArrowDown,
-			margin: 4,
-			path: "/developmentPlans",
-		},
-		{
-			name: "Feedback Tools",
-			icon: faFileArrowUp,
-			margin: 7,
-			path: "/feedback",
-		},
-		{ name: "Settings", icon: faGear, margin: 0, path: "/employeeSettings" },
+        { name: "Employee Development", icon: faHouse, margin: 0, path: "/dashboard" },
+        { name: "Assess Feedback", icon: faFileArrowDown, margin: 12, path: '/admin_feedback' },
+        { name: "Create Assessment", icon: faFileArrowUp, margin: 10, path: "/admin_feedback/create_assessment" },
+        { name: "Employee Data", icon: faStreetView, margin: 3, path: "/employee_data" },
+        { name: "Model Tuning", icon: faChartLine, margin: 5, path: "/model_tuning" },
+        { name: "Settings", icon: faGear, margin: 5, path: "/admin_settings" },
 	];
 
 	const [activeMenuItem, setActiveMenuItem] = useState("");
@@ -70,21 +57,19 @@ export default function PendingAssessment() {
 	const [pendingCount, setPendingCount] = useState([]);
 	// Fetching all employees from the database
 	useEffect(() => {
-		dispatch({ type: 'LOGIN', payload: user, no: 1, path: location.pathname })
-		localStorage.setItem('path', JSON.stringify(location.pathname))
 		let isMounted = true; // Flag to check if the component is still mounted
-
+        dispatch({type: 'LOGIN', payload: user, no: 2, path: location.pathname})
+        localStorage.setItem('path' ,JSON.stringify(location.pathname))
+		document.title = 'Assess Feedback - Assesments'
 		Promise.all([axios.post("/getAssessmentData")])
 			.then(([assessmentRes]) => {
 				if (!isMounted) return; // Prevent updating state if the component is unmounted
 				const assessmentData = assessmentRes.data;
-				const employeeAssignments = assessmentData.filter(
-					(assignment) => assignment.employeeID === allUserInfo.employeeID
-				);
-				console.log(employeeAssignments);
-				console.log(employeeAssignments.length);
-				if (employeeAssignments) {
-					setAssessmentData(employeeAssignments);
+				// const employeeAssignments = assessmentData.filter(assignment => assignment.employeeID === allUserInfo.employeeID);
+				console.log(assessmentData);
+				console.log(assessmentData.length);
+				if (assessmentData) {
+					setAssessmentData(assessmentData);
 				} else {
 					console.log("null");
 				}
@@ -126,12 +111,12 @@ export default function PendingAssessment() {
 	const [showModal, setShowModal] = useState(false);
 
 	const isActive = (path) => {
-		return '/feedback' === path; // Check if the current location matches the path
+		return '/admin_feedback' === path; // Check if the current location matches the path
 	};
 
 	const handleMenuItemClick = (path, e) => {
 		e.preventDefault();
-		navigate(path, { state: { name: user } });
+		navigate(path, { state: { userInfo: user } });
 	};
 
 	const handleAnswerChange = (index, value) => {
@@ -143,8 +128,6 @@ export default function PendingAssessment() {
 	// Function to handle form submission
 	const handleFormSubmit = () => {
 		const correctAnswers = specificE.answers;
-    console.log("correct answers: ", specificE.answers)
-    console.log("employee answers: ", employeeAnswers)
 		const totalQuestions = correctAnswers.length;
 		let correctCount = 0;
 
@@ -175,7 +158,6 @@ export default function PendingAssessment() {
 		axios
 			.post("/submitAssessmentScore", {
 				assessmentID: specificE.assignmentID,
-				employee_answers: employeeAnswers,
 				score: scoreString,
 				status: "Completed",
 			})
@@ -233,7 +215,7 @@ export default function PendingAssessment() {
 									color="rgb(34,137,255)"
 								/>
 							</div>
-							<span>Employee</span>
+							<span>Admin</span>
 						</div>
 					</div>
 					<div className="menu">
@@ -260,7 +242,7 @@ export default function PendingAssessment() {
 					<div className="header">
 						<FontAwesomeIcon icon={faUser} size="xl" color="rgb(196,196,202)" />
 						<a href="" onClick={(e) => handleMenuItemClick("/UserProfile", e)}>
-							{user}
+							{user.name}
 						</a>
 						<button
 							onClick={() => logout()}
@@ -285,12 +267,12 @@ export default function PendingAssessment() {
 								size="2x"
 								color="rgb(34, 137, 255)"
 							/>
-							<h1>Pending Assessments</h1>
+							<h1>Assessments</h1>
 						</div>
 						<div className="employeeFunctionss">
-							<div className="func">Pending Assessments</div>
+							<div className="func">Total Assessments</div>
 							<div className="countAndView">
-								<div className="funcCount">{pendingCount}</div>
+								<div className="funcCount">{assessmentData.length}</div>
 								{/* <div className='iconAndView'>
                                         <FontAwesomeIcon icon={faEye} size='3x' color='rgb(255,157,71)' />
                                         <a href="">View</a>
@@ -304,6 +286,7 @@ export default function PendingAssessment() {
 								<thead>
 									<tr>
 										<th>Assessment ID</th>
+										<th>Assigned Assessment To</th>
 										<th>Date</th>
 										<th>Action</th>
 										<th>Score</th>
@@ -314,12 +297,10 @@ export default function PendingAssessment() {
 									{assessmentData.map((assessment) => (
 										<tr key={assessment.assignmentID}>
 											<td>{assessment.assignmentID}</td>
+											<td>{assessment.employeeID}</td>
 											<td>{assessment.date}</td>
 											<td>
-												<button
-													onClick={() => addEmployee(assessment)}
-													disabled={assessment.status === "Completed"}
-												>
+												<button onClick={() => addEmployee(assessment)}>
 													<FontAwesomeIcon icon={faEye} size="xl" />
 												</button>
 											</td>
@@ -344,25 +325,19 @@ export default function PendingAssessment() {
 							<h2>Assessment</h2>
 						</div>
 						<div className="modalBody">
-							<form onSubmit={(e) => e.preventDefault()}>
-								{specificE.questions.map((question, index) => (
-									<div className="formGroup1" key={index}>
-										<label htmlFor={`question-${index}`}>{question}</label>
-										<input
-											type="text"
-											id={`question-${index}`}
-											value={employeeAnswers[index]}
-											onChange={(e) =>
-												handleAnswerChange(index, e.target.value)
-											}
-											required
-										/>
-									</div>
-								))}
-								<button type="submit" onClick={handleFormSubmit}>
-									Submit
-								</button>
-							</form>
+							{specificE.questions.map((question, index) => (
+								<div className="formGroup1" key={index}>
+									<label htmlFor={`question-${index}`}>{question}</label>
+									{specificE.status === "Completed" ? (
+										<p id={`question-${index}`}>
+											{specificE.employee_answers[index] ||
+												"No answer provided"}
+										</p>
+									) : (
+										<p id={`question-${index}`}>Answer pending...</p>
+									)}
+								</div>
+							))}
 						</div>
 					</div>
 				</div>

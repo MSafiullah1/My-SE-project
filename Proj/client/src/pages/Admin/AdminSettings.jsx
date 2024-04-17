@@ -88,10 +88,11 @@ export default function AdminSettings() {
     useEffect(() => {
         dispatch({type: 'LOGIN', payload: user, no: 2, path: location.pathname})
         localStorage.setItem('path' ,JSON.stringify(location.pathname))
+        document.title = 'Settings'
     }, [])
 
     const menuItems = [
-        { name: "Dashboard", icon: faHouse, margin: 0, path: "/dashboard" },
+        { name: "Employee Development", icon: faHouse, margin: 0, path: "/dashboard" },
         { name: "Assess Feedback", icon: faFileArrowDown, margin: 12, path: "/admin_feedback" },
         { name: "Create Assessment", icon: faFileArrowUp, margin: 10, path: "/admin_feedback/create_assessment" },
         { name: "Employee Data", icon: faStreetView, margin: 3, path: "/employee_data" },

@@ -20,7 +20,7 @@ export default function Dashboard() {
     const { authenticatedUser, no, path, dispatch} = useUserContext()
 
     const menuItems = [
-        { name: "Dashboard", icon: faHouse, margin: 0, path: "/dashboard" },
+        { name: "Employee Development", icon: faHouse, margin: 0, path: "/dashboard" },
         { name: "Assess Feedback", icon: faFileArrowDown, margin: 12, path: "/admin_feedback" },
         { name: "Create Assessment", icon: faFileArrowUp, margin: 10, path: "/admin_feedback/create_assessment" },
         { name: "Employee Data", icon: faStreetView, margin: 3, path: "/employee_data" },
@@ -28,12 +28,15 @@ export default function Dashboard() {
         { name: "Settings", icon: faGear, margin: 5, path: "/admin_settings" },
     ];
 
+    const [activeMenuItem, setActiveMenuItem] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
     const [employees, setEmployees] = useState([
         // { id: 1, role: "Manager", age: 30, contact: "123-456-7890", hoursWorked: 40, status: "Active" }
     ]);
+    const [empdata,setEmpdata] = useState([]);
 
     const[specificE,setSpecificE] = useState({})
+
 
     // Fetching all employees from the database
     useEffect(() => {
@@ -87,6 +90,7 @@ export default function Dashboard() {
     }, []); // Empty dependency array means this effect runs only once after the initial render
     
     useEffect(() => {
+        document.title = 'Assess Feedback - Course'
         dispatch({type: 'LOGIN', payload: user, no: 2, path: location.pathname})
         localStorage.setItem('path' ,JSON.stringify(location.pathname))
     }, [])
@@ -134,7 +138,7 @@ export default function Dashboard() {
     const [showModal, setShowModal] = useState(false);
 
     const isActive = (path) => {
-        return location.pathname === path; // Check if the current location matches the path
+        return '/admin_feedback' === path; // Check if the current location matches the path
     };
 
 
@@ -160,6 +164,36 @@ export default function Dashboard() {
         });
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            // set the email to the employeeID + @lums.edu.pk
+            newEmployeeData.email = newEmployeeData.employeeID + '@lums.edu.pk';
+            // setNewEmployeeData({ ...newEmployeeData, email: newEmployeeData.employeeID + '@lums.edu.pk' });
+
+            console.log(newEmployeeData);
+            const response = await axios.post('/addEmployeeFromAdminDashboard', newEmployeeData);
+            console.log('Employee added:', response.data);
+            // setEmployees([...employees, response.data]);
+
+            // Fetch all employees again to update the list
+            axios.get('/dashboard-employees')
+                .then(res => {
+                    console.log(res.data);
+                    setEmployees(res.data);
+                })
+                .catch(err => {
+                    console.log(err);
+                    toast.error('Failed to fetch employees');
+                });
+
+
+            closeModal();
+        } catch (error) {
+            console.error('Failed to add employee:', error);
+            // Handle error
+        }
+    };
 
     return (
         <div className='overlay'>
@@ -185,7 +219,7 @@ export default function Dashboard() {
                 <div className='contentAdminDash'>
                     <div className='header'>
                         <FontAwesomeIcon icon={faUser} size='xl' color='rgb(196,196,202)' />
-                        <a href="" onClick={(e) => handleMenuItemClick('/AdminProfile', e)}>{user && user.name}</a>
+                        <a href="" onClick={(e) => handleMenuItemClick('/AdminProfile', e)}>{user.name}</a>
                         <button
                             onClick={() => logout()}
                             style={{
@@ -209,17 +243,17 @@ export default function Dashboard() {
                                 icon={faFileLines}
                                 size="2x"
                                 color="rgb(34, 137, 255)"
-                            style={{marginBottom:10, marginLeft: 20}}/>
-                            <h1 style={{marginLeft:40, marginRight:60}}>Feedback Forms</h1>
-                        </div>
+                            />
+                            <h1>Feedback Forms</h1>
+                            </div>
                             <div className='employeeFunctionss'>
-                                <div className='func' style={{fontSize:25}}>Total Feedbacks</div>
+                                <div className='func'>Total Feedbacks</div>
                                 <div className='countAndView'>
                                     <div className='funcCount'>{employees.length}</div>
-                                    {/* <div className='iconAndView'> 
+                                    <div className='iconAndView'>
                                         <FontAwesomeIcon icon={faEye} size='3x' color='rgb(255,157,71)' />
                                         <a href="">View</a>
-                                    </div> */}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -228,13 +262,12 @@ export default function Dashboard() {
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>Employee ID</th>
                                         <th>Name</th>
                                         <th>Position ID</th>
                                         <th>Position Title</th>
-                                        {/* <th>Age</th> */}
-                                        {/* <th>Status</th> */}
+                                        <th>Age</th>
+                                        <th>Status</th>
                                         <th>View Feedback</th>
                                     </tr>
                                 </thead>
@@ -243,13 +276,13 @@ export default function Dashboard() {
                                         .filter(employee => employee.employeeID.toString().includes(searchTerm))
                                         .map(employee => (
                                             <tr key={employee.employeeID}>
-                                                <td>{employees.indexOf(employee) + 1}</td>
                                                 <td>{employee.employeeID}</td>
                                                 <td>{employee.name}</td>
                                                 <td>{employee.positionID}</td>
                                                 <td>{getPositionTitle(employee.positionID)}</td>
-                                                {/* <td>{getAge(employee.date_of_birth)}</td> */}
-                                                {/* <td>{employee.registered_status ? 'Registered' : 'Not registered'}</td>                  */}
+                                                <td>{getAge(employee.date_of_birth)}</td>
+                                                <td>{employee.registered_status ? 'Registered' : 'Not registered'}</td>
+                                                
                                                 <td>
                                                     {/* <a href="" onClick={(e) => viewPerformance('/dashboard/performance', e, employee)}><FontAwesomeIcon icon={faEye} size='xl' /></a> */}
                                                     <button onClick={(e) => addEmployee(employee)}><FontAwesomeIcon icon={faEye} size='xl' /></button>

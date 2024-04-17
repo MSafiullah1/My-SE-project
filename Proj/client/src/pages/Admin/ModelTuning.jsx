@@ -41,6 +41,7 @@ export default function ModelTuning() {
     useEffect(() => {
         dispatch({type: 'LOGIN', payload: user, no: 2, path: location.pathname})
         localStorage.setItem('path' ,JSON.stringify(location.pathname))
+        document.title = 'Model Tuning'
         axios.get('/weights').then(res => {
             console.log("Weights fetched: ", res.data)
             const ML_weights = res.data.find(item => item.weightsID === 1);
@@ -66,7 +67,7 @@ export default function ModelTuning() {
 
 
     const menuItems = [
-        { name: "Dashboard", icon: faHouse, margin: 0, path: "/dashboard" },
+        { name: "Employee Development", icon: faHouse, margin: 0, path: "/dashboard" },
         { name: "Assess Feedback", icon: faFileArrowDown, margin: 12, path: "/assess_feedback" },
         { name: "Create Assessment", icon: faFileArrowUp, margin: 10, path: "/create_assessment" },
         { name: "Employee Data", icon: faStreetView, margin: 3, path: "/employee_data" },

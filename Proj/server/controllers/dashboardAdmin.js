@@ -319,6 +319,42 @@ const changeAdminSecurityImg = async (reqs, resp) => {
     }
 }
 
+const updatePosition = async (reqs, resp) => {
+    try {
+        const { employeeID, new_position } = reqs.body
+        
+        const user = await Employee.findOne({ employeeID })
+        console.log('there', new_position, user.positionID)
+        if (user) {
+            const currentPosition = await Position.findOne({ positionID: user.positionID })
+            if (currentPosition) {
+                const updatedOldPosition = await Position.findOneAndUpdate({ positionID: user.positionID }, { held_by: currentPosition.held_by.filter(v => v != employeeID) }, { new: true, runValidators: true })
+                if (updatedOldPosition) {
+                    const newPosition = await Position.findOne({ positionID: new_position })
+                    if (newPosition) {
+                        newPosition.held_by.unshift(employeeID)
+                        const updatedNewPosition = await Position.findOneAndUpdate({ positionID: new_position }, { held_by: newPosition.held_by }, { new: true, runValidators: true })
+                        if (updatedNewPosition) {
+                            console.log(user)
+                            const updatedUser = await Employee.findOneAndUpdate({ employeeID }, { positionID: new_position }, { new: true, runValidators: true })
+                            if (updatedUser) {
+                                return resp.json('Successful')
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return resp.json({
+            error: 'Error'
+        })
+
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 module.exports = {
     dashboardEmployees,
     positionIDtoName,
@@ -335,7 +371,8 @@ module.exports = {
     getWorkshops,
     updateAdminPic,
     changeAdminPasssword,
-    changeAdminSecurityImg
+    changeAdminSecurityImg,
+    updatePosition
 }
 
 

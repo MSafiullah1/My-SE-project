@@ -30,6 +30,13 @@ const doAssignmentSchema = new Schema({
     required: true,
     trim: true
   }],
+
+  employee_answers: [{
+    type: String,
+    required: true,
+    trim: true
+  }],
+  
   score: {
     type: String,
     required: true

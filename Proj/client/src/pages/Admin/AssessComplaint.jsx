@@ -1,27 +1,33 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../../../context/userContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faFileArrowDown, faFileArrowUp, faStreetView, faGear, faBuilding, faUser, faFileLines, faTriangleExclamation, faEye, faTrash, faSearch, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faFileArrowDown, faFileArrowUp, faStreetView, faGear, faBuilding, faUser, faFileLines, faTriangleExclamation, faEye, faTrash, faSearch, faStar, faChartLine } from '@fortawesome/free-solid-svg-icons';
 // import './Dashboard.css';
 import './AssessComplaint.css';
 import './fonts.css';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import { useLogout } from '../../hooks/useLogout';
+import { useUserContext } from '../../hooks/useUserContext';
 
 
 export default function AssessComplaint() {
     const location = useLocation();
-    const user = location.state.name;
+    const { logout } = useLogout()
+    
+    const user = JSON.parse(localStorage.getItem('user'));
+    const { authenticatedUser, no, path, dispatch} = useUserContext()
     const navigate = useNavigate();
 
 
     const menuItems = [
-        { name: "Dashboard", icon: faHouse, margin: 0, path: "/dashboard" },
-        { name: "Assess Feedback", icon: faFileArrowDown, margin: 12, path: "/admin_feedback" },
-        { name: "Create Assessment", icon: faFileArrowUp, margin: 10, path: "/create_assessment" },
+        { name: "Employee Development", icon: faHouse, margin: 0, path: "/dashboard" },
+        { name: "Assess Feedback", icon: faFileArrowDown, margin: 12, path: '/admin_feedback' },
+        { name: "Create Assessment", icon: faFileArrowUp, margin: 10, path: "/admin_feedback/create_assessment" },
         { name: "Employee Data", icon: faStreetView, margin: 3, path: "/employee_data" },
-        { name: "Settings", icon: faGear, margin: 5, path: "/admin_settings" }
+        { name: "Model Tuning", icon: faChartLine, margin: 5, path: "/model_tuning" },
+        { name: "Settings", icon: faGear, margin: 5, path: "/admin_settings" },
     ];
 
     const [activeMenuItem, setActiveMenuItem] = useState("");
@@ -38,6 +44,9 @@ export default function AssessComplaint() {
 
     // Fetching all employees from the database
     useEffect(() => {
+        dispatch({type: 'LOGIN', payload: user, no: 2, path: location.pathname})
+        localStorage.setItem('path' ,JSON.stringify(location.pathname))
+        document.title = 'Assess Feedback - Complaint'
         let isMounted = true; // Flag to check if the component is still mounted
     
         // // Helper function to combine and update employee data
@@ -145,13 +154,13 @@ export default function AssessComplaint() {
     const [showModal, setShowModal] = useState(false);
 
     const isActive = (path) => {
-        return location.pathname === path; // Check if the current location matches the path
+        return '/admin_feedback' === path; // Check if the current location matches the path
     };
 
 
     const handleMenuItemClick = (path, e) => {
         e.preventDefault()
-        navigate(path, { state: {name: user}}); 
+        navigate(path, { state: {userInfo: user}}); 
     };
 
 
@@ -250,9 +259,9 @@ export default function AssessComplaint() {
                 <div className='contentAdminDash'>
                     <div className='header'>
                         <FontAwesomeIcon icon={faUser} size='xl' color='rgb(196,196,202)' />
-                        <a href="" onClick={(e) => handleMenuItemClick('/AdminProfile', e)}>{user}</a>
+                        <a href="" onClick={(e) => handleMenuItemClick('/AdminProfile', e)}>{user.name}</a>
                         <button
-                            onClick={() => navigate('/login')}
+                            onClick={() => logout()}
                             style={{
                                 padding: '8px 16px',
                                 backgroundColor: '#f44336',
